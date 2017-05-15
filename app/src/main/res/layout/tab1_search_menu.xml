@@ -13,9 +13,9 @@
         android:layout_height="200px"
         android:src="@mipmap/ic_launcher"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40px"
+        android:layout_marginBottom="70px"
         android:id="@+id/logo"
-        android:layout_marginTop="150px"
+        android:layout_marginTop="275px"
         />
     <EditText
         android:layout_width="match_parent"
@@ -31,14 +31,14 @@
     <com.andexert.library.RippleView
         android:id="@+id/more"
         android:layout_width="wrap_content"
-        android:layout_height="?android:actionBarSize"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:layout_below="@id/search_query_view"
         rv_centered="true"
         android:layout_centerHorizontal="true">
     <Button
-        android:layout_width="400px"
-        android:layout_height="wrap_content"
+        android:layout_width="500px"
+        android:layout_height="90px"
         android:background="#bc2961"
         android:text="Cari"
         android:textColor="@color/white"
