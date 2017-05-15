@@ -100,9 +100,19 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+          switch(position){
+              case 0:
+                  Tab1SearchMenu tab1 = new Tab1SearchMenu();
+                  return tab1;
+              case 1:
+                  Tab2MyBuyings tab2 = new Tab2MyBuyings();
+                  return tab2;
+              case 2:
+                  Tab3MyAccount tab3 = new Tab3MyAccount();
+                  return tab3;
+              default:
+                  return null;
+          }
         }
 
         @Override
@@ -115,11 +125,11 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return getString(R.string.tab1_name);
                 case 1:
-                    return "SECTION 2";
+                    return getString(R.string.tab2_name);
                 case 2:
-                    return "SECTION 3";
+                    return getString(R.string.tab3_name);
             }
             return null;
         }
