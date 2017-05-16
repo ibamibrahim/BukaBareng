@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30px">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nama barang"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:id="@+id/product_name_view"
+                android:padding="10px"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20px">
+                <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher"
+                    android:id="@+id/product_image_view"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="0px">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp 10.000.0000"
+                        android:layout_marginLeft="20px"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:id="@+id/produc_price_view"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20 pcs BeliBareng"
+                        android:layout_marginLeft="20px"
+                        android:layout_marginTop="20px"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:id="@+id/product_bought_qty_view"
+                        />
+                </LinearLayout>
+                <com.andexert.library.RippleView
+                    android:id="@+id/more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_below="@id/search_query_view">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#bc2961"
+                        android:text="BELI"
+                        android:layout_marginLeft="75px"
+                        android:textColor="@color/white"
+                        android:id="@+id/buy_button_view"/>
+                </com.andexert.library.RippleView>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>
