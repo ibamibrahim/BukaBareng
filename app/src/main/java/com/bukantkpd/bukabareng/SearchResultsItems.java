@@ -6,7 +6,7 @@ package com.bukantkpd.bukabareng;
 
 public class SearchResultsItems {
 
-   private String productName;
+    private String productName;
     private String productGroceryPrice;
     private String productNormalPrice;
     private String productCurrentQtyBuying;
