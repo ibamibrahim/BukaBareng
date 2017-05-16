@@ -42,7 +42,8 @@
         android:background="#bc2961"
         android:text="Cari"
         android:textColor="@color/white"
-        android:layout_marginTop="50px"/>
+        android:layout_marginTop="50px"
+        android:id="@+id/search_button_view"/>
     </com.andexert.library.RippleView>
 
 </RelativeLayout>
