@@ -1,6 +1,7 @@
 package com.bukantkpd.bukabareng;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,7 +24,8 @@ public class PreLoginActivity extends AppCompatActivity implements ViewPager.OnP
         splashView.addOnPageChangeListener(this);
 
         loginButton = (Button) findViewById(R.id.login_pre_button);
-
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Bold.ttf");
+        loginButton.setTypeface(custom_font);
         loginButton.setOnClickListener(this);
     }
 
