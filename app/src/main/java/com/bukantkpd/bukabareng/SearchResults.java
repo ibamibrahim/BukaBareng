@@ -28,7 +28,7 @@ public class SearchResults extends AppCompatActivity {
 
         String productName = "Jersey bola murah~";
         String initialProductPrice = "60rb";
-        String groceryProductPrice = "30rb";
+        String groceryProductPrice = "Rp 30.000";
         String boughtQty = "10 orang beli bareng!";
         int productImage = R.drawable.dummy_loading;
         String description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";

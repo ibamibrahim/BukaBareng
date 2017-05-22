@@ -1,6 +1,7 @@
 package com.bukantkpd.bukabareng;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +47,8 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         holder.productGroceryPrice.setText(item.getProductGroceryPrice());
         holder.deadline.setText(item.getDeadline());
         holder.productCurrentQtyBuying.setText(item.getProductCurrentQtyBuying());
+
+        holder.productNormalPrice.setPaintFlags(holder.productNormalPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
     }
 
     @Override
