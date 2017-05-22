@@ -2,6 +2,7 @@ package com.bukantkpd.bukabareng;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -21,7 +22,9 @@ public class SearchResults extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.search_results_list_recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         myBuyingsItems = new ArrayList<>();
+
+
     }
 }
