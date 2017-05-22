@@ -73,6 +73,8 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
             productImage = (ImageView) itemView.findViewById(R.id.search_results_image_view);
             productCurrentQtyBuying = (TextView) itemView.findViewById(R.id.collective_buying_amount_search_view);
             deadline = (TextView) itemView.findViewById(R.id.deadline_search_view);
+
+
         }
 
     }

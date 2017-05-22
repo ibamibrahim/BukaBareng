@@ -26,7 +26,7 @@ public class SearchResults extends AppCompatActivity {
 
         // creating dummy product list
 
-        String productName = "Nama Barang ke ";
+        String productName = "Jersey bola murah~";
         String initialProductPrice = "60rb";
         String groceryProductPrice = "30rb";
         String boughtQty = "10 orang beli bareng!";
