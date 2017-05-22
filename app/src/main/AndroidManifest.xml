@@ -21,7 +21,7 @@
         <activity android:name=".SearchResults" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".PreLoginActivity"></activity>
+        <activity android:name=".PreLoginActivity" />
     </application>
 
 </manifest>

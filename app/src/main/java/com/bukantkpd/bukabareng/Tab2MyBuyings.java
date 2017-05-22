@@ -18,17 +18,17 @@ public class Tab2MyBuyings extends  Fragment{
 
     RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    private List<SearchResultsItems> searchResultsData;
+    private List<MyBuyingsItem> myBuyingsItems;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab2_my_buyings, container, false);
 
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.search_results_list_recyclerView);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.my_buyings_list_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        searchResultsData = new ArrayList<>();
+        myBuyingsItems = new ArrayList<>();
 
         String productName = "Nama Barang ke ";
         int productPrice = 10000;
@@ -38,13 +38,13 @@ public class Tab2MyBuyings extends  Fragment{
         for (int i = 0; i < 50; i++){
             productPrice += i*5000;
             boughtQty += i*2;
-            SearchResultsItems temp = new SearchResultsItems(productName + i, "Rp " + productPrice, "Rp "
+            MyBuyingsItem temp = new MyBuyingsItem(productName + i, "Rp " + productPrice, "Rp "
                     + productPrice, boughtQty + " pcs BeliBareng", productImage);
 
-            searchResultsData.add(temp);
+            myBuyingsItems.add(temp);
         }
 
-        adapter = new SearchResultsAdapter(searchResultsData, getContext());
+        adapter = new MyBuyingsAdapter(myBuyingsItems, getContext());
 
         recyclerView.setAdapter(adapter);
         return rootView;

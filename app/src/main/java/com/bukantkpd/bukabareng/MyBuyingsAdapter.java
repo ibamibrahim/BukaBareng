@@ -16,12 +16,12 @@ import java.util.List;
 
 /* https://www.youtube.com/watch?v=gGFvbvkZiMs */
 
-public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.ViewHolder>{
+public class MyBuyingsAdapter extends RecyclerView.Adapter<MyBuyingsAdapter.ViewHolder>{
 
-    private List<SearchResultsItems> searchResultsData;
+    private List<MyBuyingsItem> searchResultsData;
     private Context context;
 
-    public SearchResultsAdapter(List<SearchResultsItems> srd, Context c){
+    public MyBuyingsAdapter(List<MyBuyingsItem> srd, Context c){
         searchResultsData = srd;
         context = c;
     }
@@ -29,7 +29,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.search_results_item, parent, false);
+                .inflate(R.layout.item_my_buyings, parent, false);
 
 
         return new ViewHolder(view);
@@ -37,7 +37,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        SearchResultsItems item = searchResultsData.get(position);
+        MyBuyingsItem item = searchResultsData.get(position);
 
         holder.productName.setText(item.getProductName());
         holder.productImage.setImageResource(item.getProductImage());

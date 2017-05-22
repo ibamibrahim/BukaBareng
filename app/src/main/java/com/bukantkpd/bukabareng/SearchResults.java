@@ -10,9 +10,9 @@ import java.util.List;
 
 public class SearchResults extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
+    RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    private List<SearchResultsItems> searchResultsData;
+    private List<MyBuyingsItem> myBuyingsItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,25 +22,6 @@ public class SearchResults extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.search_results_list_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        searchResultsData = new ArrayList<>();
-
-        String productName = "Nama Barang ke ";
-        int productPrice = 10000;
-        int boughtQty = 5;
-        int productImage = R.mipmap.ic_launcher;
-
-        for (int i = 0; i < 50; i++){
-            productPrice += i*5000;
-            boughtQty += i*2;
-            SearchResultsItems temp = new SearchResultsItems(productName + i, "Rp " + productPrice, "Rp "
-                    + productPrice, boughtQty + " pcs BeliBareng", productImage);
-
-            searchResultsData.add(temp);
-        }
-
-        adapter = new SearchResultsAdapter(searchResultsData, this);
-
-        recyclerView.setAdapter(adapter);
+        myBuyingsItems = new ArrayList<>();
     }
 }
