@@ -18,11 +18,11 @@ import java.util.List;
 
 public class MyBuyingsAdapter extends RecyclerView.Adapter<MyBuyingsAdapter.ViewHolder>{
 
-    private List<MyBuyingsItem> searchResultsData;
+    private List<MyBuyingsItem> myBuyingsItemsa;
     private Context context;
 
     public MyBuyingsAdapter(List<MyBuyingsItem> srd, Context c){
-        searchResultsData = srd;
+        myBuyingsItemsa = srd;
         context = c;
     }
 
@@ -37,7 +37,7 @@ public class MyBuyingsAdapter extends RecyclerView.Adapter<MyBuyingsAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        MyBuyingsItem item = searchResultsData.get(position);
+        MyBuyingsItem item = myBuyingsItemsa.get(position);
 
         holder.productName.setText(item.getProductName());
         holder.productImage.setImageResource(item.getProductImage());
@@ -47,7 +47,7 @@ public class MyBuyingsAdapter extends RecyclerView.Adapter<MyBuyingsAdapter.View
 
     @Override
     public int getItemCount() {
-        return searchResultsData.size();
+        return myBuyingsItemsa.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
