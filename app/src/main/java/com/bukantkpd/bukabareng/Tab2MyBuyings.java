@@ -5,16 +5,50 @@ package com.bukantkpd.bukabareng;
  */
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tab2MyBuyings extends  Fragment{
+
+    RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private List<SearchResultsItems> searchResultsData;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab2_my_buyings, container, false);
+
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.search_results_list_recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        searchResultsData = new ArrayList<>();
+
+        String productName = "Nama Barang ke ";
+        int productPrice = 10000;
+        int boughtQty = 5;
+        int productImage = R.mipmap.ic_launcher;
+
+        for (int i = 0; i < 50; i++){
+            productPrice += i*5000;
+            boughtQty += i*2;
+            SearchResultsItems temp = new SearchResultsItems(productName + i, "Rp " + productPrice, "Rp "
+                    + productPrice, boughtQty + " pcs BeliBareng", productImage);
+
+            searchResultsData.add(temp);
+        }
+
+        adapter = new SearchResultsAdapter(searchResultsData, getContext());
+
+        recyclerView.setAdapter(adapter);
         return rootView;
     }
+
+
 }
