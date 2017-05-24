@@ -39,7 +39,7 @@ public class MyBuyingsAdapter extends RecyclerView.Adapter<MyBuyingsAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         MyBuyingsItem item = myBuyingsItemsa.get(position);
-       // Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Bold.ttf");
+       // Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/Montserrat.ttf");
 
         holder.productName.setText(item.getProductName());
         holder.productImage.setImageResource(item.getProductImage());

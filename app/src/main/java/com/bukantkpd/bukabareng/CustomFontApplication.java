@@ -11,7 +11,7 @@ public class CustomFontApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        String fontLocation = "fonts/Montserrat-Bold.ttf";
+        String fontLocation = "fonts/Montserrat.ttf";
         FontOverride.setDefaultFont(this, "DEFAULT", fontLocation);
         FontOverride.setDefaultFont(this, "MONOSPACE", fontLocation);
         FontOverride.setDefaultFont(this, "SERIF", fontLocation);

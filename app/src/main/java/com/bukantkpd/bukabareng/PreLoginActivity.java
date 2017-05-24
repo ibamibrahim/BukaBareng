@@ -24,7 +24,7 @@ public class PreLoginActivity extends AppCompatActivity implements ViewPager.OnP
         splashView.addOnPageChangeListener(this);
 
         loginButton = (Button) findViewById(R.id.login_pre_button);
-        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Bold.ttf");
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/Montserrat.ttf");
         loginButton.setTypeface(custom_font);
         loginButton.setOnClickListener(this);
     }

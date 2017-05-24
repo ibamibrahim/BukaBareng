@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
-            <TextView
+            <com.bukantkpd.bukabareng.TextviewMontserrat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nama barang"
@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="0dp">
-                    <TextView
+                    <com.bukantkpd.bukabareng.TextviewMontserrat
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Rp 10.000.0000"
@@ -43,7 +43,7 @@
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:id="@+id/produc_price_view"
                         />
-                    <TextView
+                    <com.bukantkpd.bukabareng.TextviewMontserrat
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="20 pcs BeliBareng"
@@ -58,7 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp">
-                    <Button
+                    <com.bukantkpd.bukabareng.ButtonMontserrat
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:background="#bc2961"

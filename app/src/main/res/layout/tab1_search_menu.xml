@@ -17,7 +17,7 @@
         android:id="@+id/logo"
         android:layout_marginTop="150dp"
         />
-    <EditText
+    <com.bukantkpd.bukabareng.EdittextMontserrat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="cari barang grosiran..."
@@ -36,7 +36,7 @@
         android:layout_below="@id/search_query_view"
         rv_centered="true"
         android:layout_centerHorizontal="true">
-    <Button
+    <com.bukantkpd.bukabareng.ButtonMontserrat
         android:layout_width="300dp"
         android:layout_height="30dp"
         android:background="#bc2961"
