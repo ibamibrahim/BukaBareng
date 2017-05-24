@@ -8,37 +8,63 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorPrimary"
     tools:context="com.bukantkpd.bukabareng.LoginActivity">
-    
+
+    <com.bukantkpd.bukabareng.TextviewMontserrat
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:text="Login to BukaBareng"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="100dp"
+        android:id="@+id/login_text_view"/>
     <com.bukantkpd.bukabareng.EdittextMontserrat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:id="@+id/password_view"
         android:inputType="textPassword"
-        android:background="@drawable/edit_text_shape"
+        android:background="@color/white"
         android:hint="password"
+        android:textColor="#000000"
         android:textSize="20dp"
         android:padding="15dp"/>
 
     <com.bukantkpd.bukabareng.EdittextMontserrat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_shape"
         android:hint="username"
+        android:background="@color/white"
         android:textSize="20dp"
+        android:textColor="#000000"
         android:padding="15dp"
         android:id="@+id/username_view"
         android:layout_centerHorizontal="true"
         android:layout_above="@id/password_view"
         android:layout_marginBottom="15dp"
         />
-    <com.bukantkpd.bukabareng.ButtonMontserrat
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Login"
+    <com.andexert.library.RippleView
+        android:id="@+id/more"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@id/password_view"
-        android:layout_marginTop="15dp"
-        android:id="@+id/login_button_view"/>
+        rv_centered="true"
+        android:layout_centerHorizontal="true">
+        <com.bukantkpd.bukabareng.ButtonMontserrat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_below="@id/password_view"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:background="@color/white"
+            android:layout_marginTop="15dp"
+            android:id="@+id/login_button_view"/>
+    </com.andexert.library.RippleView>
+
 
 </RelativeLayout>
