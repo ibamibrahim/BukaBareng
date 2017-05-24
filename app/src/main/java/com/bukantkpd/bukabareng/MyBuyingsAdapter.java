@@ -1,6 +1,7 @@
 package com.bukantkpd.bukabareng;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,11 +39,13 @@ public class MyBuyingsAdapter extends RecyclerView.Adapter<MyBuyingsAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         MyBuyingsItem item = myBuyingsItemsa.get(position);
+       // Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Bold.ttf");
 
         holder.productName.setText(item.getProductName());
         holder.productImage.setImageResource(item.getProductImage());
         holder.productCurrentQtyBuying.setText(item.getProductCurrentQtyBuying());
         holder.productGroceryPrice.setText(item.getProductGroceryPrice());
+
     }
 
     @Override
