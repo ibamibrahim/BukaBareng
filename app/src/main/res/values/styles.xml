@@ -21,4 +21,16 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="AppTheme.Widget.TextView" parent="android:Widget.Holo.Light.TextView">
+        <item name="fontPath">Montserrat-Bold.ttf</item>
+    </style>
+
+    <style name="AppTheme.Widget.Button" parent="android:Widget.Holo.Light.Button">
+        <item name="fontPath">Montserrat-Bold.ttf</item>
+    </style>
+
+    <style name="AppTheme.Widget.EditText" parent="android:Widget.Holo.Light.EditText">
+        <item name="fontPath">Montserrat-Bold.ttf</item>
+    </style>
+
 </resources>

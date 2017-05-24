@@ -1,5 +1,6 @@
 package com.bukantkpd.bukabareng;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -7,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SearchResults extends AppCompatActivity {
 
@@ -52,4 +55,5 @@ public class SearchResults extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
     }
+
 }
