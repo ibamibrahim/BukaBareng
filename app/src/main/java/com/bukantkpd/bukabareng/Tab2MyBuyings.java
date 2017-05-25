@@ -32,14 +32,13 @@ public class Tab2MyBuyings extends  Fragment{
 
         String productName = "Nama Barang ke ";
         int productPrice = 10000;
-        int boughtQty = 5;
+        String boughtQty = "7 Feb 2016";
         int productImage = R.mipmap.ic_launcher;
 
         for (int i = 0; i < 50; i++){
             productPrice += i*5000;
-            boughtQty += i*2;
             MyBuyingsItem temp = new MyBuyingsItem(productName + i, "Rp " + productPrice, "Rp "
-                    + productPrice, boughtQty + " pcs BeliBareng", productImage);
+                    + productPrice, boughtQty, productImage);
 
             myBuyingsItems.add(temp);
         }
