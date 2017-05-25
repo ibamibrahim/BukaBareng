@@ -33,7 +33,7 @@ public class Tab2MyBuyings extends  Fragment{
         String productName = "Nama Barang ke ";
         int productPrice = 10000;
         String boughtQty = "7 Feb 2016";
-        int productImage = R.mipmap.ic_launcher;
+        int productImage = R.drawable.dummy_loading;
 
         for (int i = 0; i < 50; i++){
             productPrice += i*5000;
