@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
+        android:id="@+id/card_view_search_results"
         >
     <RelativeLayout
         android:layout_width="wrap_content"
