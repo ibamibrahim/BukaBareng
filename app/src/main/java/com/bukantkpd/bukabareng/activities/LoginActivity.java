@@ -1,4 +1,4 @@
-package com.bukantkpd.bukabareng;
+package com.bukantkpd.bukabareng.activities;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.bukantkpd.bukabareng.R;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 

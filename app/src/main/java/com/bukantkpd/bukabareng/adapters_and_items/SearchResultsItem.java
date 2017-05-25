@@ -1,4 +1,4 @@
-package com.bukantkpd.bukabareng;
+package com.bukantkpd.bukabareng.adapters_and_items;
 
 /**
  * Created by Ibam on 5/22/2017.

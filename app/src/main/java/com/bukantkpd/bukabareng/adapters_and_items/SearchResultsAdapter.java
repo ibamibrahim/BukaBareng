@@ -1,4 +1,4 @@
-package com.bukantkpd.bukabareng;
+package com.bukantkpd.bukabareng.adapters_and_items;
 
 import android.content.Context;
 import android.graphics.Paint;
@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.bukantkpd.bukabareng.R;
 
 import java.util.List;
 

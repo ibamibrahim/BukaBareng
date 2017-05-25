@@ -8,14 +8,14 @@
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
     android:paddingTop="5dp"
-    tools:context="com.bukantkpd.bukabareng.ProductViewActivity"
+    tools:context="com.bukantkpd.bukabareng.activities.ProductViewActivity"
     android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/header_product_view"
             android:orientation="vertical">
-            <com.bukantkpd.bukabareng.TextviewMontserrat
+            <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nama barang"
@@ -23,7 +23,7 @@
                 android:id="@+id/product_detal_name_view"
                 android:textColor="@color/colorPrimaryDark"
                 android:padding="3dp"/>
-            <com.bukantkpd.bukabareng.TextviewMontserrat
+            <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp 10.000.0000"
@@ -32,7 +32,7 @@
                 android:textColor="@color/inactive_grey"
                 android:drawablePadding="5dp"
                 />
-            <com.bukantkpd.bukabareng.TextviewMontserrat
+            <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp 10.000.0000"
@@ -66,27 +66,27 @@
                 android:orientation="vertical"
                 android:layout_marginLeft="10dp"
                 android:layout_gravity="center_vertical">
-                <com.bukantkpd.bukabareng.TextviewMontserrat
+                <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="7dp"
                     android:id="@+id/product_weight_detail_view"
                     android:text="Berat: 400 gram"
                     android:textSize="15sp"/>
-                <com.bukantkpd.bukabareng.TextviewMontserrat
+                <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="7dp"
                     android:id="@+id/product_minimumqty_detail_view"
                     android:text="Minimal: 10 pcs"/>
-                <com.bukantkpd.bukabareng.TextviewMontserrat
+                <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="7dp"
                     android:id="@+id/product_deadline_detail_view"
                     android:textSize="15sp"
                     android:text="Deadline: 7 hari lagi"/>
-                <com.bukantkpd.bukabareng.TextviewMontserrat
+                <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
                     android:layout_width="match_parent"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
@@ -102,13 +102,13 @@
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
-    <com.bukantkpd.bukabareng.TextviewMontserrat
+    <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Deskripsi"
         android:textSize="15sp"/>
-    <com.bukantkpd.bukabareng.TextviewMontserrat
+    <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis eleifend sem. Morbi ante massa, condimentum sed felis at, semper placerat sapien. Aliquam posuere vitae dolor quis sodales. Pellentesque pharetra mauris in elit suscipit auctor. Ut varius accumsan urna id ornare. Duis in efficitur mauris. Mauris et augue nibh.
@@ -121,7 +121,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <com.bukantkpd.bukabareng.ButtonMontserrat
+        <com.bukantkpd.bukabareng.custom_ui.ButtonMontserrat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

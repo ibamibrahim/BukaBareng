@@ -1,4 +1,4 @@
-package com.bukantkpd.bukabareng;
+package com.bukantkpd.bukabareng.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

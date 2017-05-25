@@ -1,4 +1,4 @@
-package com.bukantkpd.bukabareng;
+package com.bukantkpd.bukabareng.adapters_and_items;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;

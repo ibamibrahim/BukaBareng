@@ -25,7 +25,7 @@
                 android:adjustViewBounds="true"
                 android:id="@+id/search_results_image_view"/>
 
-            <com.bukantkpd.bukabareng.TextviewMontserrat
+            <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/search_results_image_view"
@@ -54,13 +54,13 @@
             android:layout_below="@id/upper_layout_search_result"
             android:id="@+id/price_search_view"
             android:layout_marginTop="5dp">
-            <com.bukantkpd.bukabareng.TextviewMontserrat
+            <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp. 500rb"
                 android:textSize="15sp"
                 android:id="@+id/initial_price_search_view"/>
-            <com.bukantkpd.bukabareng.TextviewMontserrat
+            <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp. 500rb"
@@ -77,13 +77,13 @@
             android:layout_below="@id/price_search_view"
             android:id="@+id/additional_info_search_layout_view"
             android:layout_marginTop="5dp">
-            <com.bukantkpd.bukabareng.TextviewMontserrat
+            <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="30 orang beli bareng"
                 android:textSize="10sp"
                 android:id="@+id/collective_buying_amount_search_view"/>
-            <com.bukantkpd.bukabareng.TextviewMontserrat
+            <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="7 hari lagi"
@@ -92,7 +92,7 @@
                 android:layout_alignParentRight="true"
                 android:id="@+id/deadline_search_view"/>
         </RelativeLayout>
-        <com.bukantkpd.bukabareng.ButtonMontserrat
+        <com.bukantkpd.bukabareng.custom_ui.ButtonMontserrat
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:layout_below="@id/additional_info_search_layout_view"

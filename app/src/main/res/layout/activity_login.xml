@@ -9,9 +9,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/colorPrimary"
-    tools:context="com.bukantkpd.bukabareng.LoginActivity">
+    tools:context="com.bukantkpd.bukabareng.activities.LoginActivity">
 
-    <com.bukantkpd.bukabareng.TextviewMontserrat
+    <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
@@ -22,7 +22,7 @@
         android:textColor="@color/white"
         android:layout_marginTop="120dp"
         android:id="@+id/login_text_view"/>
-    <com.bukantkpd.bukabareng.EdittextMontserrat
+    <com.bukantkpd.bukabareng.custom_ui.EdittextMontserrat
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -40,7 +40,7 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"/>
 
-    <com.bukantkpd.bukabareng.EdittextMontserrat
+    <com.bukantkpd.bukabareng.custom_ui.EdittextMontserrat
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="username"
@@ -58,7 +58,7 @@
         android:drawableLeft="@drawable/user"
         android:drawablePadding="5dp"
         />
-    <com.bukantkpd.bukabareng.ButtonMontserrat
+    <com.bukantkpd.bukabareng.custom_ui.ButtonMontserrat
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"

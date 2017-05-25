@@ -1,18 +1,19 @@
-package com.bukantkpd.bukabareng;
+package com.bukantkpd.bukabareng.fragments;
 
 /**
  * Created by Ibam on 5/16/2017.
  */
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+
+import com.bukantkpd.bukabareng.R;
+import com.bukantkpd.bukabareng.activities.SearchResultsActivity;
 
 public class Tab1SearchMenu extends Fragment implements View.OnClickListener{
 
@@ -34,7 +35,7 @@ public class Tab1SearchMenu extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.search_button_view:
-                Intent intent = new Intent(getActivity(), SearchResults.class);
+                Intent intent = new Intent(getActivity(), SearchResultsActivity.class);
                 startActivity(intent);
                 break;
         }

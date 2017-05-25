@@ -5,7 +5,7 @@
     android:id="@+id/activity_pre_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bukantkpd.bukabareng.PreLoginActivity">
+    tools:context="com.bukantkpd.bukabareng.activities.PreLoginActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

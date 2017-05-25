@@ -1,4 +1,4 @@
-package com.bukantkpd.bukabareng;
+package com.bukantkpd.bukabareng.fragments;
 
 /**
  * Created by Ibam on 5/16/2017.
@@ -10,6 +10,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.bukantkpd.bukabareng.R;
+import com.bukantkpd.bukabareng.adapters_and_items.MyBuyingsAdapter;
+import com.bukantkpd.bukabareng.adapters_and_items.MyBuyingsItem;
 
 import java.util.ArrayList;
 import java.util.List;

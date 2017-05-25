@@ -1,4 +1,4 @@
-package com.bukantkpd.bukabareng;
+package com.bukantkpd.bukabareng.fragments;
 
 /**
  * Created by Ibam on 5/16/2017.
@@ -8,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.bukantkpd.bukabareng.R;
 
 public class Tab3MyAccount extends Fragment{
 

@@ -1,6 +1,5 @@
-package com.bukantkpd.bukabareng;
+package com.bukantkpd.bukabareng.activities;
 
-import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,15 +11,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
-import android.widget.TextView;
-
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+import com.bukantkpd.bukabareng.R;
+import com.bukantkpd.bukabareng.fragments.Tab1SearchMenu;
+import com.bukantkpd.bukabareng.fragments.Tab2MyBuyings;
+import com.bukantkpd.bukabareng.fragments.Tab3MyAccount;
 
 public class MainActivity extends AppCompatActivity {
 

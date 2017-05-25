@@ -1,6 +1,5 @@
-package com.bukantkpd.bukabareng;
+package com.bukantkpd.bukabareng.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,12 +7,15 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.bukantkpd.bukabareng.R;
+import com.bukantkpd.bukabareng.activities.ProductViewActivity;
+import com.bukantkpd.bukabareng.adapters_and_items.SearchResultsAdapter;
+import com.bukantkpd.bukabareng.adapters_and_items.SearchResultsItem;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
-
-public class SearchResults extends AppCompatActivity implements SearchResultsAdapter.SearchResultsClickListener{
+public class SearchResultsActivity extends AppCompatActivity implements SearchResultsAdapter.SearchResultsClickListener{
 
     RecyclerView recyclerView;
     private SearchResultsAdapter adapter;

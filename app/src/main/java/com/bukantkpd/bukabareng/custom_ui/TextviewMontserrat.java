@@ -1,29 +1,28 @@
-package com.bukantkpd.bukabareng;
+package com.bukantkpd.bukabareng.custom_ui;
 
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Created by Ibam on 5/24/2017.
  */
 
-public class EdittextMontserrat extends EditText {
-
-    public EdittextMontserrat(Context context) {
+public class TextviewMontserrat extends TextView {
+    public TextviewMontserrat(Context context) {
         super(context);
     init(); }
 
-    public EdittextMontserrat(Context context, AttributeSet attrs) {
+    public TextviewMontserrat(Context context, AttributeSet attrs) {
         super(context, attrs);
     init(); }
 
-    public EdittextMontserrat(Context context, AttributeSet attrs, int defStyleAttr) {
+    public TextviewMontserrat(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-    init();}
+    init(); }
 
-    public EdittextMontserrat(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public TextviewMontserrat(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     init(); }
 
@@ -31,5 +30,4 @@ public class EdittextMontserrat extends EditText {
         Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Montserrat.ttf");
         setTypeface(tf);
     }
-
 }

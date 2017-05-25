@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/white"
-    tools:context="com.bukantkpd.bukabareng.MainActivity">
+    tools:context="com.bukantkpd.bukabareng.activities.MainActivity">
 
     <ImageView
         android:layout_width="75dp"
@@ -18,7 +18,7 @@
         android:id="@+id/logo"
         android:layout_marginTop="80dp"
         />
-    <com.bukantkpd.bukabareng.EdittextMontserrat
+    <com.bukantkpd.bukabareng.custom_ui.EdittextMontserrat
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="search"
@@ -33,7 +33,7 @@
         android:layout_below="@id/logo"
         android:drawableLeft="@drawable/search"
         android:drawablePadding="10dp"/>
-    <com.bukantkpd.bukabareng.ButtonMontserrat
+    <com.bukantkpd.bukabareng.custom_ui.ButtonMontserrat
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"

@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.bukantkpd.bukabareng.MainActivity">
+    tools:context="com.bukantkpd.bukabareng.activities.MainActivity">
 
     <ImageView
         android:layout_width="100dp"
@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"
         android:id="@+id/account_image"/>
-    <com.bukantkpd.bukabareng.TextviewMontserrat
+    <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/account_image"
@@ -25,7 +25,7 @@
         android:textSize="20sp"
         android:id="@+id/username_account_view"
         />
-    <com.bukantkpd.bukabareng.TextviewMontserrat
+    <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -34,7 +34,7 @@
         android:text="Saldo BukaDompet Anda: "
         android:textSize="15sp"
         android:id="@+id/saldo_anda_title"/>
-    <com.bukantkpd.bukabareng.TextviewMontserrat
+    <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -47,7 +47,7 @@
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:id="@+id/account_balance_view"/>
-    <com.bukantkpd.bukabareng.ButtonMontserrat
+    <com.bukantkpd.bukabareng.custom_ui.ButtonMontserrat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="?android:attr/borderlessButtonStyle"
