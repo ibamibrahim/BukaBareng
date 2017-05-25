@@ -19,7 +19,7 @@
         android:layout_marginTop="80dp"
         />
     <com.bukantkpd.bukabareng.EdittextMontserrat
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:hint="search"
         android:layout_centerHorizontal="true"
@@ -33,22 +33,14 @@
         android:layout_below="@id/logo"
         android:drawableLeft="@drawable/search"
         android:drawablePadding="10dp"/>
-    <com.andexert.library.RippleView
-        android:id="@+id/more"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_below="@id/search_query_view"
-        rv_centered="true"
-        android:layout_centerHorizontal="true">
     <com.bukantkpd.bukabareng.ButtonMontserrat
-        android:layout_width="300dp"
-        android:layout_height="30dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:text="Cari"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/search_query_view"
         android:textColor="@color/white"
         android:layout_marginTop="30dp"
         android:id="@+id/search_button_view"/>
-    </com.andexert.library.RippleView>
-
 </RelativeLayout>

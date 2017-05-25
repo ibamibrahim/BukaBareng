@@ -19,24 +19,13 @@
             android:layout_alignParentBottom="true"
             android:layout_weight="1"
             style="?android:attr/borderlessButtonStyle"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryDark"
             android:text="LOGIN"
             android:textSize="17sp"
             android:textColor="#ffffff"
             android:textStyle="bold"
             android:id="@+id/login_pre_button"
             />
- <!--       <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_weight="1"
-            style="?android:attr/borderlessButtonStyle"
-            android:background="@color/colorPrimary"
-            android:text="SIGN UP"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            />-->
     </LinearLayout>
 
     <com.chabbal.slidingdotsplash.SlidingSplashView

@@ -58,23 +58,16 @@
         android:drawableLeft="@drawable/user"
         android:drawablePadding="5dp"
         />
-    <com.andexert.library.RippleView
-        android:id="@+id/more"
-        android:layout_width="300dp"
-        android:layout_height="match_parent"
-        android:layout_below="@id/password_view"
-        rv_centered="true"
-        android:layout_centerHorizontal="true">
-        <com.bukantkpd.bukabareng.ButtonMontserrat
-            android:layout_width="match_parent"
+    <com.bukantkpd.bukabareng.ButtonMontserrat
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:text="Login"
             android:textColor="@color/white"
             android:layout_below="@id/password_view"
             android:background="@drawable/button_border"
             android:layout_marginTop="15dp"
             android:id="@+id/login_button_view"/>
-    </com.andexert.library.RippleView>
 
 
 </RelativeLayout>
