@@ -1,9 +1,11 @@
 package com.bukantkpd.bukabareng.activities;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -61,46 +63,78 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if(usernameText.isEmpty() || passwordText.isEmpty()){
                     Toast.makeText(this, "Email dan password tidak boleh kosong!", Toast.LENGTH_SHORT).show();
                 } else {
-                    login(usernameText, passwordText);
+                    AsyncTaskRunner runner = new AsyncTaskRunner(this);
+                    runner.execute(usernameText, passwordText);
+                    //login(usernameText, passwordText);
                     Log.d("DEBUG", " Login pressed");
                     break;
                 }
         }
     }
+    private class AsyncTaskRunner extends AsyncTask<String, String, String>{
+        ProgressDialog pd;
 
-    private void login(String username, String password){
+        public AsyncTaskRunner(LoginActivity login){
+            pd = new ProgressDialog(login);
+        }
 
-        bbasService.getUsersDetail(username, password).enqueue(new Callback<UserModel>() {
-            @Override
-            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+        @Override
+        protected void onPreExecute() {
+            pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            pd.setMessage("Login...");
 
-                if(response.isSuccessful()){
+            pd.show();
 
-                    String token = response.body().getToken();
-                    String username = response.body().getUserName();
-                    String email = response.body().getEmail();
-                    //int userId = response.body().getId();
-                    boolean isLoggedIn = true;
+        }
 
-                    //Log.d("token ", token);
-                    sharedPreferenceEditor.putString("token", token);
-                    sharedPreferenceEditor.putString("username", username);
-                    sharedPreferenceEditor.putString("email", email);
-                    //sharedPreferenceEditor.putInt("userId", userId);
-                    sharedPreferenceEditor.putBoolean("isLoggedIn", isLoggedIn);
 
-                    sharedPreferenceEditor.commit();
+        @Override
+        protected String doInBackground(String... params) {
 
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
+            login(params[0], params[1]);
 
+            return "";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            pd.dismiss();
+
+
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        }
+
+        private void login(String username, String password){
+
+            bbasService.getUsersDetail(username, password).enqueue(new Callback<UserModel>() {
+                @Override
+                public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+
+                    if(response.isSuccessful()){
+
+                        String token = response.body().getToken();
+                        String username = response.body().getUserName();
+                        String email = response.body().getEmail();
+                        //int userId = response.body().getId();
+                        boolean isLoggedIn = true;
+
+                        //Log.d("token ", token);
+                        sharedPreferenceEditor.putString("token", token);
+                        sharedPreferenceEditor.putString("username", username);
+                        sharedPreferenceEditor.putString("email", email);
+                        //sharedPreferenceEditor.putInt("userId", userId);
+                        sharedPreferenceEditor.putBoolean("isLoggedIn", isLoggedIn);
+
+                        sharedPreferenceEditor.commit();
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<UserModel> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Username atau password salah!", Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<UserModel> call, Throwable t) {
+                    Toast.makeText(LoginActivity.this, "Username atau password salah!", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 }
