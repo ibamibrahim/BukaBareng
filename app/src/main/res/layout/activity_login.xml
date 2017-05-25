@@ -35,7 +35,10 @@
         android:layout_centerHorizontal="true"
         android:drawableLeft="@drawable/password"
         android:drawablePadding="5dp"
-        android:padding="15dp"/>
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
 
     <com.bukantkpd.bukabareng.EdittextMontserrat
         android:layout_width="300dp"
@@ -44,7 +47,10 @@
         android:background="@color/white"
         android:textSize="20sp"
         android:textColor="@color/colorPrimary"
-        android:padding="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:id="@+id/username_view"
         android:layout_centerHorizontal="true"
         android:layout_above="@id/password_view"
