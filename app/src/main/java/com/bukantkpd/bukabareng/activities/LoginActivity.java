@@ -10,11 +10,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.bukantkpd.bukabareng.R;
+import com.bukantkpd.bukabareng.api.remote.ApiUtils;
+import com.bukantkpd.bukabareng.api.remote.BukBarAPIService;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button loginButton;
     EditText username, password;
+    private BukBarAPIService bbasService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/Montserrat.ttf");
 
+
+        bbasService = ApiUtils.getBBASService();
 
         loginButton = (Button) findViewById(R.id.login_button_view);
         username = (EditText) findViewById(R.id.username_view);
