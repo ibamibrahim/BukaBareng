@@ -1,20 +1,22 @@
 package com.bukantkpd.bukabareng;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class SearchResults extends AppCompatActivity {
+public class SearchResults extends AppCompatActivity implements SearchResultsAdapter.SearchResultsClickListener{
 
     RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    private SearchResultsAdapter adapter;
     private List<SearchResultsItem> searchResultsItemList;
 
     @Override
@@ -52,8 +54,14 @@ public class SearchResults extends AppCompatActivity {
         }
 
         adapter = new SearchResultsAdapter(searchResultsItemList, this);
+        adapter.setSearchResultsOnClickListener(this);
 
         recyclerView.setAdapter(adapter);
     }
 
+    @Override
+    public void onBuyButtonClicked(View view, int position) {
+        Intent intent = new Intent(this, ProductViewActivity.class);
+        startActivity(intent);
+    }
 }

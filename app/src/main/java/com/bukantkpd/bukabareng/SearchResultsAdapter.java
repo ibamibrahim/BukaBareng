@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,7 +22,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
 
     private List<SearchResultsItem> searchResultsData;
     private Context context;
-
+    private SearchResultsClickListener srcl;
     public SearchResultsAdapter (List<SearchResultsItem> srd, Context c){
         searchResultsData = srd;
         context = c;
@@ -37,7 +38,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
     }
 
     @Override
-    public void onBindViewHolder(SearchResultsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(SearchResultsAdapter.ViewHolder holder, final int position) {
         SearchResultsItem item = searchResultsData.get(position);
 
         holder.productName.setText(item.getProductName());
@@ -49,6 +50,14 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         holder.productCurrentQtyBuying.setText(item.getProductCurrentQtyBuying());
 
         holder.productNormalPrice.setPaintFlags(holder.productNormalPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        holder.buyButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                // on button click
+                srcl.onBuyButtonClicked(v, position);
+            }
+        });
+
     }
 
     @Override
@@ -65,6 +74,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         public ImageView productImage;
         public TextView description;
         public TextView deadline;
+        public Button buyButton;
 
         public ViewHolder(View itemView){
             super(itemView);
@@ -76,9 +86,24 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
             productImage = (ImageView) itemView.findViewById(R.id.search_results_image_view);
             productCurrentQtyBuying = (TextView) itemView.findViewById(R.id.collective_buying_amount_search_view);
             deadline = (TextView) itemView.findViewById(R.id.deadline_search_view);
+            buyButton = (Button) itemView.findViewById(R.id.buy_button_search_view);
 
 
         }
-
     }
+
+
+
+    // below interface is to create onClick on recycler view item
+    // https://stackoverflow.com/questions/24885223/
+
+    public interface SearchResultsClickListener{
+        void onBuyButtonClicked(View view, int position);
+    }
+
+    public void setSearchResultsOnClickListener(SearchResultsClickListener srcl){
+        this.srcl = srcl;
+    }
+
+
 }
