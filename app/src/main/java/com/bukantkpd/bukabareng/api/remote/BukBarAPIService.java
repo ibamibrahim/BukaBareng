@@ -16,4 +16,5 @@ public interface BukBarAPIService {
 
     @POST("/auth/ret_user")
     Call<UserModel> getUsersDetail(@Query("email") String email, @Query("password") String password);
+    
 }
