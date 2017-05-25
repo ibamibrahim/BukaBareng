@@ -1,6 +1,8 @@
 package com.bukantkpd.bukabareng.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +30,8 @@ public class PreLoginActivity extends AppCompatActivity implements ViewPager.OnP
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/Montserrat.ttf");
         loginButton.setTypeface(custom_font);
         loginButton.setOnClickListener(this);
+
+        isLoggedIn();
     }
 
     @Override
@@ -55,6 +59,17 @@ public class PreLoginActivity extends AppCompatActivity implements ViewPager.OnP
                 startActivity(intent);
                 finish();
                 break;
+        }
+    }
+
+    private void isLoggedIn(){
+        SharedPreferences sp = this.getSharedPreferences("bukabareng", Context.MODE_PRIVATE);
+        boolean isLoggedIn = sp.getBoolean("isLoggedIn", false);
+
+        if(isLoggedIn){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 }

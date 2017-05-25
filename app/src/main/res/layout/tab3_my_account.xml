@@ -55,5 +55,6 @@
         android:text="LOG OUT"
         android:layout_below="@id/account_balance_view"
         android:layout_marginTop="50dp"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:id="@+id/logout_button"/>
 </RelativeLayout>

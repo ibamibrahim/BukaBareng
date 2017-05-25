@@ -1,6 +1,8 @@
 package com.bukantkpd.bukabareng.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.bukantkpd.bukabareng.R;
 import com.bukantkpd.bukabareng.api.model.UserModel;
@@ -23,6 +26,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     Button loginButton;
     EditText username, password;
     String usernameText, passwordText;
+
+
+    SharedPreferences sharedPreference;
+    SharedPreferences.Editor sharedPreferenceEditor;
+
     private BukBarAPIService bbasService;
 
     @Override
@@ -38,23 +46,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         username = (EditText) findViewById(R.id.username_view);
         password = (EditText) findViewById(R.id.password_view);
         loginButton.setOnClickListener(this);
+        sharedPreference = this.getSharedPreferences("bukabareng", Context.MODE_PRIVATE);
+        sharedPreferenceEditor = sharedPreference.edit();
+
     }
 
     @Override
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.login_button_view:
-                Intent intent = new Intent(this, MainActivity.class);
-
                 usernameText = username.getText().toString();
                 passwordText = password.getText().toString();
 
-                login(usernameText, passwordText);
-
-
-                startActivity(intent);
-                Log.d("DEBUG"," Login pressed");
-                break;
+                if(usernameText.isEmpty() || passwordText.isEmpty()){
+                    Toast.makeText(this, "Email dan password tidak boleh kosong!", Toast.LENGTH_SHORT).show();
+                } else {
+                    login(usernameText, passwordText);
+                    Log.d("DEBUG", " Login pressed");
+                    break;
+                }
         }
     }
 
@@ -65,14 +75,31 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onResponse(Call<UserModel> call, Response<UserModel> response) {
 
                 if(response.isSuccessful()){
+
                     String token = response.body().getToken();
-                    Log.d("token ", token);
+                    String username = response.body().getUserName();
+                    String email = response.body().getEmail();
+                    //int userId = response.body().getId();
+                    boolean isLoggedIn = true;
+
+                    //Log.d("token ", token);
+                    sharedPreferenceEditor.putString("token", token);
+                    sharedPreferenceEditor.putString("username", username);
+                    sharedPreferenceEditor.putString("email", email);
+                    //sharedPreferenceEditor.putInt("userId", userId);
+                    sharedPreferenceEditor.putBoolean("isLoggedIn", isLoggedIn);
+
+                    sharedPreferenceEditor.commit();
+
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+
                 }
             }
 
             @Override
             public void onFailure(Call<UserModel> call, Throwable t) {
-
+                Toast.makeText(LoginActivity.this, "Username atau password salah!", Toast.LENGTH_SHORT).show();
             }
         });
     }
