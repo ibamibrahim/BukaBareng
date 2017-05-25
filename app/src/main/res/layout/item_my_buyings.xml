@@ -46,11 +46,12 @@
                     <com.bukantkpd.bukabareng.TextviewMontserrat
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="20 pcs BeliBareng"
+                        android:text="17 Februari 2016"
                         android:layout_marginLeft="7dp"
                         android:layout_marginTop="7dp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:id="@+id/product_bought_qty_view"
+                        android:drawableLeft="@drawable/user"
                         />
                 </LinearLayout>
                 <com.andexert.library.RippleView
@@ -61,8 +62,8 @@
                     <com.bukantkpd.bukabareng.ButtonMontserrat
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:background="#bc2961"
-                        android:text="BELI"
+                        android:background="@color/colorPrimary"
+                        android:text="BAYAR"
                         android:layout_marginLeft="25dp"
                         android:textColor="@color/white"
                         android:id="@+id/buy_button_view"/>
