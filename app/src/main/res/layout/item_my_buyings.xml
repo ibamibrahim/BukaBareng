@@ -29,6 +29,7 @@
                 <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
                 android:src="@mipmap/ic_launcher"
                     android:id="@+id/product_image_view"/>
                 <LinearLayout
@@ -76,6 +77,17 @@
                         android:id="@+id/buy_button_view"/>
                 </com.andexert.library.RippleView>
             </LinearLayout>
+            <com.bukantkpd.bukabareng.TextviewMontserrat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textSize="10sp"
+                android:text="Menunggu pembayaran"
+                android:textColor="@color/white"
+                android:background="@drawable/tag_background_green"/>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
