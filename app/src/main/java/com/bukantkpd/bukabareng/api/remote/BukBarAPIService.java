@@ -9,11 +9,11 @@ import com.bukantkpd.bukabareng.api.model.UserModel;
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface BukBarAPIService {
 
-    @GET("/auth/ret_user")
-    Call<UserModel> getAnswers(@Query("email") String email, @Query("password") String password);
+    @POST("/auth/ret_user")
+    Call<UserModel> getUsersDetail(@Query("email") String email, @Query("password") String password);
 }

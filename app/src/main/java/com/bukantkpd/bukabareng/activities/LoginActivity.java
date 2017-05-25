@@ -10,13 +10,19 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.bukantkpd.bukabareng.R;
+import com.bukantkpd.bukabareng.api.model.UserModel;
 import com.bukantkpd.bukabareng.api.remote.ApiUtils;
 import com.bukantkpd.bukabareng.api.remote.BukBarAPIService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button loginButton;
     EditText username, password;
+    String usernameText, passwordText;
     private BukBarAPIService bbasService;
 
     @Override
@@ -39,9 +45,35 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch(v.getId()){
             case R.id.login_button_view:
                 Intent intent = new Intent(this, MainActivity.class);
+
+                usernameText = username.getText().toString();
+                passwordText = password.getText().toString();
+
+                login(usernameText, passwordText);
+
+
                 startActivity(intent);
                 Log.d("DEBUG"," Login pressed");
                 break;
         }
+    }
+
+    private void login(String username, String password){
+
+        bbasService.getUsersDetail(username, password).enqueue(new Callback<UserModel>() {
+            @Override
+            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+
+                if(response.isSuccessful()){
+                    String token = response.body().getToken();
+                    Log.d("token ", token);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserModel> call, Throwable t) {
+
+            }
+        });
     }
 }
