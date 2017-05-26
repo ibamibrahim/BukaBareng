@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
 
@@ -49,7 +50,8 @@ public class SearchResultsActivity extends AppCompatActivity implements SearchRe
 
         recyclerView = (RecyclerView) findViewById(R.id.search_results_list_recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        //recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, 1));
         recyclerView.setAdapter(adapter);
 
         sharedPreference = this.getSharedPreferences("bukabareng", Context.MODE_PRIVATE);

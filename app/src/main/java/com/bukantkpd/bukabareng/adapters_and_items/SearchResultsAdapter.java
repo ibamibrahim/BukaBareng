@@ -1,8 +1,11 @@
 package com.bukantkpd.bukabareng.adapters_and_items;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,6 +84,10 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         Picasso.with(holder.productImage.getContext()).load(imageUrl).into(holder
                 .productImage);
 
+        if(!item.getIsMassDrop()){
+            holder.cardContainer.setCardBackgroundColor(Color.RED);
+        }
+
     }
 
     @Override
@@ -103,6 +110,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         public TextView description;
         public TextView deadline;
         public Button buyButton;
+        public CardView cardContainer;
 
         public ViewHolder(View itemView){
             super(itemView);
@@ -115,7 +123,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
             productCurrentQtyBuying = (TextView) itemView.findViewById(R.id.collective_buying_amount_search_view);
             deadline = (TextView) itemView.findViewById(R.id.deadline_search_view);
             buyButton = (Button) itemView.findViewById(R.id.buy_button_search_view);
-
+            cardContainer = (CardView) itemView.findViewById(R.id.card_view_search_results);
 
         }
     }
@@ -135,7 +143,10 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         this.srcl = srcl;
     }
 
+    @SuppressWarnings("deprecation")
     public String cutDescripton(String description){
+
+        description = Html.fromHtml(description).toString();
         String strOut;
         if(description.length() > 100) {
             strOut = description.substring(0, 99) + "...";
