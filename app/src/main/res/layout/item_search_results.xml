@@ -77,12 +77,45 @@
             android:layout_below="@id/price_search_view"
             android:id="@+id/additional_info_search_layout_view"
             android:layout_marginTop="5dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/grosir_isBeliBareng_layout"
+                android:orientation="horizontal">
+                <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="10sp"
+                    android:text="Grosir"
+                    android:textColor="@color/white"
+                    android:id="@+id/is_grosir_tag"
+                    android:background="@drawable/tag_background_yellow"/>
+                /><com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="10sp"
+                    android:text="BeliBareng"
+                    android:textColor="@color/white"
+                    android:id="@+id/isMassDrop_tag"
+                    android:background="@drawable/tag_background_primary"/>
+                />
+            </LinearLayout>
+
             <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="30 orang beli bareng"
                 android:textSize="10sp"
-                android:id="@+id/collective_buying_amount_search_view"/>
+                android:id="@+id/collective_buying_amount_search_view"
+                android:layout_below="@id/grosir_isBeliBareng_layout"/>
             <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -90,7 +123,8 @@
                 android:textSize="10sp"
                 android:layout_marginLeft="25dp"
                 android:layout_alignParentRight="true"
-                android:id="@+id/deadline_search_view"/>
+                android:id="@+id/deadline_search_view"
+                android:layout_below="@id/grosir_isBeliBareng_layout"/>
         </RelativeLayout>
         <com.bukantkpd.bukabareng.custom_ui.ButtonMontserrat
             android:layout_width="match_parent"
