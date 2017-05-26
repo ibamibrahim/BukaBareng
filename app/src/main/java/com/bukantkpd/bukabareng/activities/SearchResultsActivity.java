@@ -30,8 +30,6 @@ public class SearchResultsActivity extends AppCompatActivity implements SearchRe
 
     RecyclerView recyclerView;
     private SearchResultsAdapter adapter;
-    private List<SearchResultsItem> searchResultsItemList;
-
     private BukBarAPIService bbasService;
     String query, token;
     SharedPreferences sharedPreference;
@@ -46,23 +44,21 @@ public class SearchResultsActivity extends AppCompatActivity implements SearchRe
 
         bbasService = ApiUtils.getBBASService();
 
+
+        adapter = new SearchResultsAdapter(this, new ArrayList<ProductModel>(0));
+
         recyclerView = (RecyclerView) findViewById(R.id.search_results_list_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.setAdapter(adapter);
 
         sharedPreference = this.getSharedPreferences("bukabareng", Context.MODE_PRIVATE);
-
         query = getIntent().getStringExtra("searchQuery");
         token = sharedPreference.getString("token", null);
-
         Log.d("Search Query & token: ", query + " " + token);
 
-        searchResultsItemList = getProducts(query, token);
+        getProducts(query, token);
 
-        adapter = new SearchResultsAdapter(searchResultsItemList, this);
-        adapter.setSearchResultsOnClickListener(this);
-
-        recyclerView.setAdapter(adapter);
     }
 
     @Override
@@ -83,56 +79,24 @@ public class SearchResultsActivity extends AppCompatActivity implements SearchRe
         }
     }
 
-    private ArrayList<SearchResultsItem> getProducts(String query, String token){
-        final ArrayList<SearchResultsItem> result = new ArrayList<>();
-
+    private void getProducts(String query, String token){
         bbasService.getProductSearch(query, token).enqueue(new Callback<SearchResultListModel>() {
             @Override
             public void onResponse(Call<SearchResultListModel> call, Response<SearchResultListModel> response) {
-
-                List<ProductModel> apiProductListResult;
-
-                apiProductListResult = response.body().getProductsList();
-                SearchResultsItem temp;
-
-                for(ProductModel product : apiProductListResult){
-
-                    String productNormalPrice = product.getPrice()+"";
-                    String productGroceryPrice = product.getLowerPrice()+"";
-                    String sellerLocation = product.getCity();
-                    String imageUrl = product.getImage();
-                    String description = product.getDesc();
-                    String productId = product.getProductId();
-                    String minimumBuying = product.getLowerBound()+"";
-                    String deadline = product.getDeadline();
-                    String weight = product.getWeight()+"";
-                    String productName = "Dummy name";
-                    boolean isMassDrop; String currentQtyBuying;
-
-                    try{
-                        isMassDrop = product.getIsMassDrop();
-                        currentQtyBuying = product.getQuantity()+"";
-                    } catch (Exception e){
-
-                    } finally {
-                        isMassDrop = false;
-                        currentQtyBuying = -1+"";
-                    }
-
-                    temp = new SearchResultsItem(sellerLocation, deadline, isMassDrop, currentQtyBuying, description, productGroceryPrice, productId, imageUrl, productName, productNormalPrice, weight);
-
-                    result.add(temp);
-
-                    Log.d("Tambah barang: ", productId);
+                if(response.isSuccessful()){
+                    adapter.updateList(response.body().getProductsList());
+                    Log.d("Search Result Act", "post loaded from API");
+                } else {
+                    int statusCode = response.code();
+                    Log.d("ERROR API", statusCode+"");
                 }
             }
 
             @Override
             public void onFailure(Call<SearchResultListModel> call, Throwable t) {
-
+                t.printStackTrace();
+                Log.d("MainActivity", "error loading from API");
             }
         });
-
-        return result;
     }
 }

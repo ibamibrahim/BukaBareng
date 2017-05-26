@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bukantkpd.bukabareng.R;
+import com.bukantkpd.bukabareng.api.model.ProductModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -20,16 +22,20 @@ import java.util.List;
 
 public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.ViewHolder>{
 
-    private List<SearchResultsItem> searchResultsData;
+    private List<ProductModel> searchResultsData;
     private Context context;
     private SearchResultsClickListener srcl;
-    public SearchResultsAdapter (List<SearchResultsItem> srd, Context c){
-        searchResultsData = srd;
-        context = c;
+
+    public SearchResultsAdapter(Context c, List<ProductModel> productModelList, SearchResultsClickListener
+            searchResultsClickListener){
+        this.context = c;
+        this.searchResultsData = productModelList;
+        this.srcl = searchResultsClickListener;
     }
 
-    public SearchResultsAdapter(Context c){
+    public SearchResultsAdapter(Context c, List<ProductModel> productModelList){
         this.context = c;
+        this.searchResultsData = productModelList;
     }
 
     @Override
@@ -43,31 +49,48 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
 
     @Override
     public void onBindViewHolder(SearchResultsAdapter.ViewHolder holder, final int position) {
-        SearchResultsItem item = searchResultsData.get(position);
 
-        holder.productName.setText(item.getProductName());
-        holder.description.setText(item.getProductDescription());
-        //holder.productImage.setImageResource(item.getProductImage());
-        holder.productImage.setImageResource(R.drawable.dummy_loading);
-        holder.productNormalPrice.setText(item.getProductNormalPrice());
-        holder.productGroceryPrice.setText(item.getProductGroceryPrice());
-        holder.deadline.setText(item.getDeadline());
-        holder.productCurrentQtyBuying.setText(item.getProductCurrentQtyBuying());
+        ProductModel item = searchResultsData.get(position);
 
-        holder.productNormalPrice.setPaintFlags(holder.productNormalPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        holder.buyButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                // on button click
-                srcl.onBuyButtonClicked(v, position);
-            }
-        });
+        holder.productName.setText("Dummy product name");
+
+        holder.description.setText(cutDescripton(item.getDesc()));
+        try {
+            holder.productGroceryPrice.setText(item.getLowerPrice());
+        } catch (Exception e){
+            e.printStackTrace();
+            holder.productGroceryPrice.setText("-1");
+        }
+
+        try {
+            holder.productNormalPrice.setText(item.getPrice());
+        } catch (Exception e){
+            e.printStackTrace();
+            holder.productNormalPrice.setText("-2");
+        }
+
+        try {
+            holder.deadline.setText(item.getDeadline());
+            holder.productCurrentQtyBuying.setText(item.getQuantity());
+        } catch (Exception e){
+            e.printStackTrace();
+            holder.deadline.setText("aaa");
+            holder.productCurrentQtyBuying.setText("aaaaaaaa");
+        }
+        String imageUrl = item.getImage();
+        Picasso.with(holder.productImage.getContext()).load(imageUrl).into(holder
+                .productImage);
 
     }
 
     @Override
     public int getItemCount() {
         return searchResultsData.size();
+    }
+
+    public void updateList(List<ProductModel> productModelList){
+        this.searchResultsData = productModelList;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -99,6 +122,8 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
 
 
 
+
+
     // below interface is to create onClick on recycler view item
     // https://stackoverflow.com/questions/24885223/
 
@@ -110,9 +135,15 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         this.srcl = srcl;
     }
 
-    public void setDataset(List<SearchResultsItem> srd){
-        this.searchResultsData = srd;
-    }
+    public String cutDescripton(String description){
+        String strOut;
+        if(description.length() > 100) {
+            strOut = description.substring(0, 99) + "...";
+        } else {
+            return description;
+        }
 
+        return strOut;
+    }
 
 }
