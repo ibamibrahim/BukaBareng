@@ -30,8 +30,6 @@ public class Tab1SearchMenu extends Fragment implements View.OnClickListener{
 
         searchButton.setOnClickListener(this);
 
-        query = searchQuery.getText().toString();
-
         return rootView;
     }
 
@@ -39,16 +37,16 @@ public class Tab1SearchMenu extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.search_button_view:
-
-                if(query == ""){
+                query = searchQuery.getText().toString();
+                if(query.equals("")){
                     Toast.makeText(getActivity(), "Masukkan query pencarian!", Toast.LENGTH_SHORT).show();
                 } else {
-
-                }
                     Intent intent = new Intent(getActivity(), SearchResultsActivity.class);
                     intent.putExtra("searchQuery", query);
 
                     startActivity(intent);
+                }
+
                 break;
         }
     }

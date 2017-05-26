@@ -47,7 +47,8 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
 
         holder.productName.setText(item.getProductName());
         holder.description.setText(item.getProductDescription());
-        holder.productImage.setImageResource(item.getProductImage());
+        //holder.productImage.setImageResource(item.getProductImage());
+        holder.productImage.setImageResource(R.drawable.dummy_loading);
         holder.productNormalPrice.setText(item.getProductNormalPrice());
         holder.productGroceryPrice.setText(item.getProductGroceryPrice());
         holder.deadline.setText(item.getDeadline());

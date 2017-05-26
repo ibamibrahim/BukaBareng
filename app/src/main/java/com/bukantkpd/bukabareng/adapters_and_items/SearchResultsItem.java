@@ -6,24 +6,56 @@ package com.bukantkpd.bukabareng.adapters_and_items;
 
 public class SearchResultsItem {
 
+
     private String productName;
     private String productGroceryPrice;
     private String productNormalPrice;
     private String productCurrentQtyBuying;
     private String productDescription;
-    private int productImage;
+    private String productImage;
     private String deadline;
+    private String weight;
+    boolean isMassDrop;
+    private String productId;
+    private String city;
 
-    public SearchResultsItem(){}
 
-    public SearchResultsItem(String deadline, String productCurrentQtyBuying, String productDescription, String productGroceryPrice, int productImage, String productName, String productNormalPrice) {
+    public SearchResultsItem(String city, String deadline, boolean isMassDrop, String productCurrentQtyBuying, String productDescription, String productGroceryPrice, String productId, String productImage, String productName, String productNormalPrice, String weight) {
+        this.city = city;
         this.deadline = deadline;
+        this.isMassDrop = isMassDrop;
         this.productCurrentQtyBuying = productCurrentQtyBuying;
         this.productDescription = productDescription;
         this.productGroceryPrice = productGroceryPrice;
+        this.productId = productId;
         this.productImage = productImage;
         this.productName = productName;
         this.productNormalPrice = productNormalPrice;
+        this.weight = weight;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+
+    public boolean isMassDrop() {
+        return isMassDrop;
+    }
+
+    public void setMassDrop(boolean massDrop) {
+        isMassDrop = massDrop;
+    }
+
+
+    public SearchResultsItem(){
+        productName = ""; productGroceryPrice = ""; productNormalPrice = ""; productCurrentQtyBuying = "";
+        productDescription = ""; productImage = ""; deadline = ""; weight = ""; city = ""; isMassDrop= false;
+        productId = "";
     }
 
     public String getDeadline() {
@@ -58,11 +90,11 @@ public class SearchResultsItem {
         this.productGroceryPrice = productGroceryPrice;
     }
 
-    public int getProductImage() {
+    public String getProductImage() {
         return productImage;
     }
 
-    public void setProductImage(int productImage) {
+    public void setProductImage(String productImage) {
         this.productImage = productImage;
     }
 
@@ -81,4 +113,21 @@ public class SearchResultsItem {
     public void setProductNormalPrice(String productNormalPrice) {
         this.productNormalPrice = productNormalPrice;
     }
+
+    public String getWeight(){
+        return this.weight;
+    }
+    public void setWeight(int weight){
+        this.weight = weight + " gram";
+    }
+
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
 }
