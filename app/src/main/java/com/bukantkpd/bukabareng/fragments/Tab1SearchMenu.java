@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.bukantkpd.bukabareng.R;
 import com.bukantkpd.bukabareng.activities.SearchResultsActivity;
@@ -19,6 +20,7 @@ public class Tab1SearchMenu extends Fragment implements View.OnClickListener{
 
     Button searchButton;
     EditText searchQuery;
+    String query;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -28,6 +30,8 @@ public class Tab1SearchMenu extends Fragment implements View.OnClickListener{
 
         searchButton.setOnClickListener(this);
 
+        query = searchQuery.getText().toString();
+
         return rootView;
     }
 
@@ -35,8 +39,16 @@ public class Tab1SearchMenu extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.search_button_view:
-                Intent intent = new Intent(getActivity(), SearchResultsActivity.class);
-                startActivity(intent);
+
+                if(query == ""){
+                    Toast.makeText(getActivity(), "Masukkan query pencarian!", Toast.LENGTH_SHORT).show();
+                } else {
+
+                }
+                    Intent intent = new Intent(getActivity(), SearchResultsActivity.class);
+                    intent.putExtra("searchQuery", query);
+
+                    startActivity(intent);
                 break;
         }
     }

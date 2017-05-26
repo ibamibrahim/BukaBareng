@@ -28,6 +28,10 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         context = c;
     }
 
+    public SearchResultsAdapter(Context c){
+        this.context = c;
+    }
+
     @Override
     public SearchResultsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -103,6 +107,10 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
 
     public void setSearchResultsOnClickListener(SearchResultsClickListener srcl){
         this.srcl = srcl;
+    }
+
+    public void setDataset(List<SearchResultsItem> srd){
+        this.searchResultsData = srd;
     }
 
 

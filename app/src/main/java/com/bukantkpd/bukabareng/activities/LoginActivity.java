@@ -63,14 +63,52 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if(usernameText.isEmpty() || passwordText.isEmpty()){
                     Toast.makeText(this, "Email dan password tidak boleh kosong!", Toast.LENGTH_SHORT).show();
                 } else {
-                    AsyncTaskRunner runner = new AsyncTaskRunner(this);
+                    /*AsyncTaskRunner runner = new AsyncTaskRunner(this);
                     runner.execute(usernameText, passwordText);
-                    //login(usernameText, passwordText);
+                    */
+                    login(usernameText, passwordText);
                     Log.d("DEBUG", " Login pressed");
                     break;
                 }
         }
     }
+
+
+    private void login(String username, String password){
+
+        bbasService.getUsersDetail(username, password).enqueue(new Callback<UserModel>() {
+            @Override
+            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+
+                if(response.isSuccessful()){
+
+                    String token = response.body().getToken();
+                    String username = response.body().getUserName();
+                    String email = response.body().getEmail();
+                    //int userId = response.body().getId();
+                    boolean isLoggedIn = true;
+
+                    //Log.d("token ", token);
+                    sharedPreferenceEditor.putString("token", token);
+                    sharedPreferenceEditor.putString("username", username);
+                    sharedPreferenceEditor.putString("email", email);
+                    //sharedPreferenceEditor.putInt("userId", userId);
+                    sharedPreferenceEditor.putBoolean("isLoggedIn", isLoggedIn);
+
+                    sharedPreferenceEditor.commit();
+
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserModel> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, "Username atau password salah!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private class AsyncTaskRunner extends AsyncTask<String, String, String>{
         ProgressDialog pd;
 
@@ -99,42 +137,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         @Override
         protected void onPostExecute(String s) {
             pd.dismiss();
-
-
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-        }
-
-        private void login(String username, String password){
-
-            bbasService.getUsersDetail(username, password).enqueue(new Callback<UserModel>() {
-                @Override
-                public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-
-                    if(response.isSuccessful()){
-
-                        String token = response.body().getToken();
-                        String username = response.body().getUserName();
-                        String email = response.body().getEmail();
-                        //int userId = response.body().getId();
-                        boolean isLoggedIn = true;
-
-                        //Log.d("token ", token);
-                        sharedPreferenceEditor.putString("token", token);
-                        sharedPreferenceEditor.putString("username", username);
-                        sharedPreferenceEditor.putString("email", email);
-                        //sharedPreferenceEditor.putInt("userId", userId);
-                        sharedPreferenceEditor.putBoolean("isLoggedIn", isLoggedIn);
-
-                        sharedPreferenceEditor.commit();
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<UserModel> call, Throwable t) {
-                    Toast.makeText(LoginActivity.this, "Username atau password salah!", Toast.LENGTH_SHORT).show();
-                }
-            });
         }
     }
 }

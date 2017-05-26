@@ -29,7 +29,7 @@ public class SearchResultsActivity extends AppCompatActivity implements SearchRe
         setContentView(R.layout.activity_search_results);
 
         isLoggedIn();
-
+        
         recyclerView = (RecyclerView) findViewById(R.id.search_results_list_recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -58,6 +58,7 @@ public class SearchResultsActivity extends AppCompatActivity implements SearchRe
 
             searchResultsItemList.add(newItem);
         }
+
 
         adapter = new SearchResultsAdapter(searchResultsItemList, this);
         adapter.setSearchResultsOnClickListener(this);
