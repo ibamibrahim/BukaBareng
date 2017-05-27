@@ -37,6 +37,5 @@ dependencies {
     compile 'uk.co.chrisjenx:calligraphy:2.3.0'
     compile 'com.uncopt:android.justified:1.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
-
-
+    compile 'joda-time:joda-time:2.9.9'
 }

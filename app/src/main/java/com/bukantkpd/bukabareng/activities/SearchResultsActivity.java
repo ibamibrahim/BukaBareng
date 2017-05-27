@@ -19,6 +19,7 @@ import com.bukantkpd.bukabareng.api.model.ProductModel;
 import com.bukantkpd.bukabareng.api.model.SearchResultListModel;
 import com.bukantkpd.bukabareng.api.remote.ApiUtils;
 import com.bukantkpd.bukabareng.api.remote.BukBarAPIService;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,6 +87,9 @@ public class SearchResultsActivity extends AppCompatActivity implements SearchRe
             @Override
             public void onResponse(Call<SearchResultListModel> call, Response<SearchResultListModel> response) {
                 if(response.isSuccessful()){
+                    String result = new Gson().toJson(response.body().getProductsList());
+
+                    Log.d("JSON RESULT", result);
                     adapter.updateList(response.body().getProductsList());
                     Log.d("Search Result Act", "post loaded from API");
                 } else {

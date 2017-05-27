@@ -17,6 +17,13 @@ import com.bukantkpd.bukabareng.R;
 import com.bukantkpd.bukabareng.api.model.ProductModel;
 import com.squareup.picasso.Picasso;
 
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+import org.w3c.dom.Text;
+
+import java.text.DateFormat;
 import java.util.List;
 
 /**
@@ -58,35 +65,35 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         holder.productName.setText("Dummy product name");
 
         holder.description.setText(cutDescripton(item.getDesc()));
-        try {
-            holder.productGroceryPrice.setText(item.getLowerPrice());
-        } catch (Exception e){
-            e.printStackTrace();
-            holder.productGroceryPrice.setText("-1");
+        holder.productGroceryPrice.setText("Rp " + item.getLowerPrice());
+        holder.productNormalPrice.setText("Rp " + item.getPrice());
+        holder.productName.setText(item.getName());
+
+        holder.productGroceryPrice.setPaintFlags(holder.productGroceryPrice.getPaintFlags() | Paint
+                .STRIKE_THRU_TEXT_FLAG);
+        if(!item.getIsMassDrop()){
+            holder.deadline.setVisibility(View.INVISIBLE);
+            holder.productCurrentQtyBuying.setVisibility(View.INVISIBLE);
+            holder.isBeliBarengView.setVisibility(View.INVISIBLE);
+            holder.buyButton.setEnabled(false);
+        } else {
+            holder.productCurrentQtyBuying.setText(item.getQuantity()+" pc BeliBareng");
+
+            DateTimeFormatter formatter = DateTimeFormat.forPattern("YYYY-MM-DD");
+            DateTime currentDate = new DateTime();
+            DateTime deadlineDate = DateTime.parse(item.getDeadline(), formatter);
+            int days = Days.daysBetween(deadlineDate, currentDate).getDays();
+            String deadlineText = days +" hari lagi";
+
+            holder.deadline.setText(deadlineText);
+
         }
 
-        try {
-            holder.productNormalPrice.setText(item.getPrice());
-        } catch (Exception e){
-            e.printStackTrace();
-            holder.productNormalPrice.setText("-2");
-        }
 
-        try {
-            holder.deadline.setText(item.getDeadline());
-            holder.productCurrentQtyBuying.setText(item.getQuantity());
-        } catch (Exception e){
-            e.printStackTrace();
-            holder.deadline.setText("aaa");
-            holder.productCurrentQtyBuying.setText("aaaaaaaa");
-        }
         String imageUrl = item.getImage();
         Picasso.with(holder.productImage.getContext()).load(imageUrl).into(holder
                 .productImage);
 
-        if(!item.getIsMassDrop()){
-            holder.cardContainer.setCardBackgroundColor(Color.RED);
-        }
 
     }
 
@@ -111,6 +118,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         public TextView deadline;
         public Button buyButton;
         public CardView cardContainer;
+        public TextView isBeliBarengView;
 
         public ViewHolder(View itemView){
             super(itemView);
@@ -124,6 +132,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
             deadline = (TextView) itemView.findViewById(R.id.deadline_search_view);
             buyButton = (Button) itemView.findViewById(R.id.buy_button_search_view);
             cardContainer = (CardView) itemView.findViewById(R.id.card_view_search_results);
+            isBeliBarengView = (TextView) itemView.findViewById(R.id.isMassDrop_tag);
 
         }
     }

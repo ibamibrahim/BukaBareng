@@ -47,6 +47,18 @@ public class ProductModel {
     @Expose
     private Integer quantity;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @SerializedName("name")
+    @Expose
+    private String name;
+
     public Integer getPrice() {
         return price;
     }
