@@ -65,17 +65,27 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         holder.productName.setText("Dummy product name");
 
         holder.description.setText(cutDescripton(item.getDesc()));
-        holder.productGroceryPrice.setText("Rp " + item.getLowerPrice());
-        holder.productNormalPrice.setText("Rp " + item.getPrice());
+
+        int groceryPrice = item.getLowerPrice();
+        groceryPrice = groceryPrice/1000;
+        String groceryPriceText = "Rp " + groceryPrice + " rb";
+        holder.productGroceryPrice.setText(groceryPriceText);
+
+        int normalPrice = item.getPrice();
+        normalPrice = normalPrice/1000;
+        String normalPriceText = "Rp " + normalPrice + " rb";
+
+        holder.productNormalPrice.setText(normalPriceText);
+
         holder.productName.setText(item.getName());
 
-        holder.productGroceryPrice.setPaintFlags(holder.productGroceryPrice.getPaintFlags() | Paint
+        holder.productNormalPrice.setPaintFlags(holder.productNormalPrice.getPaintFlags() | Paint
                 .STRIKE_THRU_TEXT_FLAG);
         if(!item.getIsMassDrop()){
             holder.deadline.setVisibility(View.INVISIBLE);
             holder.productCurrentQtyBuying.setVisibility(View.INVISIBLE);
             holder.isBeliBarengView.setVisibility(View.INVISIBLE);
-            holder.buyButton.setEnabled(false);
+            holder.buyButton.setBackgroundColor(Color.parseColor("#7f8c8d"));
         } else {
             holder.productCurrentQtyBuying.setText(item.getQuantity()+" pc BeliBareng");
 
