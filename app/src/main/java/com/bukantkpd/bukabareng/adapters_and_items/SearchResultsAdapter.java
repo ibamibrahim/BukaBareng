@@ -1,6 +1,7 @@
 package com.bukantkpd.bukabareng.adapters_and_items;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.v7.widget.CardView;
@@ -12,8 +13,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bukantkpd.bukabareng.R;
+import com.bukantkpd.bukabareng.activities.ProductViewActivity;
 import com.bukantkpd.bukabareng.api.model.ProductModel;
 import com.squareup.picasso.Picasso;
 
@@ -30,7 +33,7 @@ import java.util.List;
  * Created by Ibam on 5/22/2017.
  */
 
-public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.ViewHolder>{
+public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.ViewHolder> {
 
     private List<ProductModel> searchResultsData;
     private Context context;
@@ -60,7 +63,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
     @Override
     public void onBindViewHolder(SearchResultsAdapter.ViewHolder holder, final int position) {
 
-        ProductModel item = searchResultsData.get(position);
+       final ProductModel item = searchResultsData.get(position);
 
         holder.productName.setText("Dummy product name");
 
@@ -103,6 +106,14 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         String imageUrl = item.getImage();
         Picasso.with(holder.productImage.getContext()).load(imageUrl).into(holder
                 .productImage);
+
+        holder.buyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProductViewActivity.class);
+                context.startActivity(intent);
+            }
+        });
 
 
     }

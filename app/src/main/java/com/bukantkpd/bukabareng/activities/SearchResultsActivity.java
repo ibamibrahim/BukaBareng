@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bukantkpd.bukabareng.R;
 import com.bukantkpd.bukabareng.activities.ProductViewActivity;
@@ -102,6 +103,12 @@ public class SearchResultsActivity extends AppCompatActivity implements SearchRe
             public void onFailure(Call<SearchResultListModel> call, Throwable t) {
                 t.printStackTrace();
                 Log.d("MainActivity", "error loading from API");
+                Toast.makeText(SearchResultsActivity.this, "Request timedout, try to search again" +
+                        " in a few seconds", Toast
+                        .LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+
             }
         });
     }
