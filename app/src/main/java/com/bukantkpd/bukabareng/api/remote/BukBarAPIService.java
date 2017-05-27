@@ -12,6 +12,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -22,4 +23,7 @@ public interface BukBarAPIService {
 
     @GET("/get/products")
     Call<SearchResultListModel> getProductSearch(@Query("keyword") String keyword, @Query("token") String token);
+
+    @POST("./")
+    Call<UserModel> authUser(@Header("Authorization") String credentials);
 }

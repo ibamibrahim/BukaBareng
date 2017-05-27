@@ -7,8 +7,12 @@ package com.bukantkpd.bukabareng.api.remote;
 public class ApiUtils {
 
     public static final String BASE_URL = "https://powerful-taiga-29434.herokuapp.com/";
-
+    public static final String BASE_URL_AUTH = "https://api.bukalapak.com/v2/authenticate.json/";
     public static BukBarAPIService getBBASService() {
         return RetrofitClient.getClient(BASE_URL).create(BukBarAPIService.class);
+    }
+
+    public static BukBarAPIService getBBASAuthService(){
+        return RetrofitClient.getClient(BASE_URL_AUTH).create(BukBarAPIService.class);
     }
 }

@@ -8,25 +8,57 @@ import com.google.gson.annotations.SerializedName;
 
 public class UserModel {
 
-    @SerializedName("id")
+
+    @SerializedName("status")
     @Expose
-    private Integer id;
+    private String status;
+    @SerializedName("message")
+    @Expose
+    private Object message;
+    @SerializedName("user_id")
+    @Expose
+    private Integer userId;
     @SerializedName("user_name")
     @Expose
     private String userName;
-    @SerializedName("email")
+    @SerializedName("confirmed")
     @Expose
-    private String email;
+    private Boolean confirmed;
     @SerializedName("token")
     @Expose
     private String token;
+    @SerializedName("email")
+    @Expose
+    private String email;
+    @SerializedName("confirmed_phone")
+    @Expose
+    private Object confirmedPhone;
+    @SerializedName("omnikey")
+    @Expose
+    private String omnikey;
 
-    public Integer getId() {
-        return id;
+    public String getStatus() {
+        return status;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Object getMessage() {
+        return message;
+    }
+
+    public void setMessage(Object message) {
+        this.message = message;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {
@@ -37,12 +69,12 @@ public class UserModel {
         this.userName = userName;
     }
 
-    public String getEmail() {
-        return email;
+    public Boolean getConfirmed() {
+        return confirmed;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setConfirmed(Boolean confirmed) {
+        this.confirmed = confirmed;
     }
 
     public String getToken() {
@@ -53,5 +85,28 @@ public class UserModel {
         this.token = token;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Object getConfirmedPhone() {
+        return confirmedPhone;
+    }
+
+    public void setConfirmedPhone(Object confirmedPhone) {
+        this.confirmedPhone = confirmedPhone;
+    }
+
+    public String getOmnikey() {
+        return omnikey;
+    }
+
+    public void setOmnikey(String omnikey) {
+        this.omnikey = omnikey;
+    }
 }
 

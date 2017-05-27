@@ -7,6 +7,7 @@ package com.bukantkpd.bukabareng.api.remote;
 /**
  * Class for creating Singleton Retrofit Client
  */
+import okhttp3.Credentials;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

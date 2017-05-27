@@ -2,10 +2,13 @@ package com.bukantkpd.bukabareng.activities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +23,7 @@ import com.bukantkpd.bukabareng.api.remote.ApiUtils;
 import com.bukantkpd.bukabareng.api.remote.BukBarAPIService;
 import com.google.gson.Gson;
 
+import okhttp3.Credentials;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,7 +47,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/Montserrat.ttf");
 
 
-        bbasService = ApiUtils.getBBASService();
+        bbasService = ApiUtils.getBBASAuthService();
 
         loginButton = (Button) findViewById(R.id.login_button_view);
         username = (EditText) findViewById(R.id.username_view);
@@ -77,7 +81,35 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void login(String username, String password){
 
-        bbasService.getUsersDetail(username, password).enqueue(new Callback<UserModel>() {
+        String credentials = Credentials.basic(username, password);
+        bbasService.authUser(credentials).enqueue(new Callback<UserModel>() {
+            @Override
+            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                if(response.body().getStatus().equals("OK")){
+                    Gson gson = new Gson();
+                    String strObj = gson.toJson(response.body());
+                    boolean isLoggedIn = true;
+                    sharedPreferenceEditor.putString("userObj", strObj);
+                    sharedPreferenceEditor.putBoolean("isLoggedIn", isLoggedIn);
+                    sharedPreferenceEditor.commit();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(LoginActivity.this, "Login Gagal! Username atau password salah",
+                            Toast.LENGTH_SHORT)
+                            .show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserModel> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(LoginActivity.this, "Login gagal!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+       /* bbasService.getUsersDetail(username, password).enqueue(new Callback<UserModel>() {
             @Override
             public void onResponse(Call<UserModel> call, Response<UserModel> response) {
 
@@ -89,10 +121,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     String token = response.body().getToken();
                     String username = response.body().getUserName();
                     String email = response.body().getEmail();
-                    //int userId = response.body().getId();
+                    int userId = response.body().getId();
                     boolean isLoggedIn = true;
 
-                    Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();;/*
+                    Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();;*//*
+
                     sharedPreferenceEditor.putString("token", token);
                     sharedPreferenceEditor.putString("username", username);
                     sharedPreferenceEditor.putString("email", email);
@@ -102,7 +135,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     sharedPreferenceEditor.commit();
 
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);*/
+                    startActivity(intent);*//*
                 }
             }
 
@@ -111,7 +144,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 t.printStackTrace();
                 Toast.makeText(LoginActivity.this, "Username atau password salah!", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 
     private class AsyncTaskRunner extends AsyncTask<String, String, String>{

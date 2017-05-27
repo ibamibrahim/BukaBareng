@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/colorPrimary"
+    android:background="@color/white"
     tools:context="com.bukantkpd.bukabareng.activities.LoginActivity">
 
     <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
@@ -19,7 +19,7 @@
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:textSize="30sp"
-        android:textColor="@color/white"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_marginTop="120dp"
         android:id="@+id/login_text_view"/>
     <com.bukantkpd.bukabareng.custom_ui.EdittextMontserrat
@@ -28,36 +28,20 @@
         android:layout_centerVertical="true"
         android:id="@+id/password_view"
         android:inputType="textPassword"
-        android:background="@color/white"
+        android:background="@color/grey"
         android:hint="password"
         android:textColor="@color/colorPrimary"
         android:textSize="20sp"
+        android:layout_marginTop="3dp"
         android:layout_centerHorizontal="true"
         android:drawableLeft="@drawable/password"
         android:drawablePadding="5dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:paddingTop="10dp"
+        android:singleLine="true"
         android:paddingBottom="10dp"/>
 
-    <com.bukantkpd.bukabareng.custom_ui.EdittextMontserrat
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:hint="username"
-        android:background="@color/white"
-        android:textSize="20sp"
-        android:textColor="@color/colorPrimary"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:id="@+id/username_view"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/password_view"
-        android:layout_marginBottom="1dp"
-        android:drawableLeft="@drawable/user"
-        android:drawablePadding="5dp"
-        />
     <com.bukantkpd.bukabareng.custom_ui.ButtonMontserrat
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -68,6 +52,24 @@
             android:background="@drawable/button_border"
             android:layout_marginTop="15dp"
             android:id="@+id/login_button_view"/>
+
+    <com.bukantkpd.bukabareng.custom_ui.EdittextMontserrat
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="email"
+        android:background="@color/grey"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimary"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/username_view"
+        android:drawableLeft="@drawable/user"
+        android:singleLine="true"
+        android:drawablePadding="5dp"
+        android:layout_above="@+id/password_view"
+        android:layout_alignStart="@+id/password_view" />
 
 
 </RelativeLayout>

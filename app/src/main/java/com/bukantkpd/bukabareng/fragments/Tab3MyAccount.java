@@ -19,6 +19,9 @@ import android.widget.TextView;
 import com.bukantkpd.bukabareng.R;
 import com.bukantkpd.bukabareng.activities.PreLoginActivity;
 import com.bukantkpd.bukabareng.activities.SearchResultsActivity;
+import com.bukantkpd.bukabareng.api.model.ProductModel;
+import com.bukantkpd.bukabareng.api.model.UserModel;
+import com.google.gson.Gson;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -33,13 +36,23 @@ public class Tab3MyAccount extends Fragment implements View.OnClickListener{
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab3_my_account, container, false);
 
-        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("bukabareng",
+                Context
+                .MODE_PRIVATE);
 
-        String usernameText = "Halo, " + preferences.getString("username", null) + "!";
-        username = (TextView) rootView.findViewById(R.id.username_account_view);
+        try {
+            Gson gson = new Gson();
+            String strObj = preferences.getString("userObj", null);
+            UserModel user = gson.fromJson(strObj, UserModel.class);
+
+            String usernameText = "Halo, " + user.getUserName() + "!";
+            username = (TextView) rootView.findViewById(R.id.username_account_view);
+            username.setText(usernameText);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
         logOutButton = (Button) rootView.findViewById(R.id.logout_button);
-        username.setText(usernameText);
 
         logOutButton.setOnClickListener(this);
 
