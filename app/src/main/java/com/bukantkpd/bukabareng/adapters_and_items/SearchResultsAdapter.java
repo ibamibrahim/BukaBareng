@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.bukantkpd.bukabareng.R;
 import com.bukantkpd.bukabareng.activities.ProductViewActivity;
 import com.bukantkpd.bukabareng.api.model.ProductModel;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import org.joda.time.DateTime;
@@ -27,7 +28,9 @@ import org.joda.time.format.DateTimeFormatter;
 import org.w3c.dom.Text;
 
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Ibam on 5/22/2017.
@@ -96,7 +99,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
             DateTime currentDate = new DateTime();
             DateTime deadlineDate = DateTime.parse(item.getDeadline(), formatter);
             int days = Days.daysBetween(deadlineDate, currentDate).getDays();
-            String deadlineText = days +" hari lagi";
+            final String deadlineText = days +" hari lagi";
 
             holder.deadline.setText(deadlineText);
 
@@ -110,7 +113,12 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
         holder.buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Gson gson = new Gson();
+
+
                 Intent intent = new Intent(context, ProductViewActivity.class);
+                intent.putExtra("product", gson.toJson(item));
+
                 context.startActivity(intent);
             }
         });
