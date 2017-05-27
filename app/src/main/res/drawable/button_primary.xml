@@ -3,20 +3,20 @@
     <item android:state_pressed="true">
         <shape>
             <solid
-                android:color="@color/colorPrimaryDark"
+                android:color="@color/colorPrimaryLight"
                 />
             <corners
-                android:radius="10dp" />
+                android:radius="40dp" />
         </shape>
     </item>
 
     <item android:state_focused="true">
         <shape>
             <solid
-                android:color="@color/colorPrimaryDark"
+                android:color="@color/colorPrimaryLight"
                 />
             <corners
-                android:radius="10dp" />
+                android:radius="40dp" />
         </shape>
     </item>
 
@@ -26,7 +26,7 @@
                 android:color="@color/inactive_grey"
                 />
             <corners
-                android:radius="10dp" />
+                android:radius="40dp" />
         </shape>
     </item>
 
@@ -36,7 +36,7 @@
                 android:color="@color/colorPrimary"
                 />
            <corners
-                android:radius="10dp" />
+                android:radius="40dp" />
         </shape>
     </item>
 </selector>

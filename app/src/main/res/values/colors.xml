@@ -2,6 +2,7 @@
 <resources>
     <color name="colorPrimaryDark">#446CB3</color>
     <color name="colorPrimary">#22A7F0</color>
+    <color name="colorPrimaryLight">#79CAF6</color>
     <color name="colorAccent">#FF8A65</color>
     <color name="edit_text_stroke">#e0e0e0</color>
     <color name="white">#ffffff</color>
@@ -11,4 +12,5 @@
     <color name="grey">#ecf0f1</color>
     <color name="red">#e74c3c</color>
     <color name="red_darker">#c0392b</color>
+    <color name="red_lighter">#ED7A6E</color>
 </resources>
