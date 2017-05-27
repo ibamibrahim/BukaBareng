@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class SearchResultsActivity extends AppCompatActivity implements SearchRe
 
 
     @Override
+    @SuppressWarnings("deprecation")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
@@ -60,6 +62,10 @@ public class SearchResultsActivity extends AppCompatActivity implements SearchRe
         query = getIntent().getStringExtra("searchQuery");
         token = sharedPreference.getString("token", null);
         Log.d("Search Query & token: ", query + " " + token);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_search_result);
+        toolbar.setTitle("hasil pencarian " + query + "     ....");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
 
         getProducts(query, token);
 
@@ -111,5 +117,10 @@ public class SearchResultsActivity extends AppCompatActivity implements SearchRe
 
             }
         });
+    }
+
+    @Override
+    public void setActionBar(android.widget.Toolbar toolbar) {
+        super.setActionBar(toolbar);
     }
 }

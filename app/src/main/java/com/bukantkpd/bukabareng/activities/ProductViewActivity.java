@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,6 +37,7 @@ public class ProductViewActivity extends AppCompatActivity {
     ImageView viewImage;
 
     @Override
+    @SuppressWarnings("deprecation")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_view);
@@ -85,6 +87,10 @@ public class ProductViewActivity extends AppCompatActivity {
 
 
         Picasso.with(viewImage.getContext()).load(imageUrl).into(viewImage);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_product_view);
+        toolbar.setTitle(productName);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
     }
 
 
