@@ -19,9 +19,11 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.bukantkpd.bukabareng.R;
+import com.bukantkpd.bukabareng.api.model.UserModel;
 import com.bukantkpd.bukabareng.fragments.Tab1SearchMenu;
 import com.bukantkpd.bukabareng.fragments.Tab2MyBuyings;
 import com.bukantkpd.bukabareng.fragments.Tab3MyAccount;
+import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,8 +46,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences preferences = getSharedPreferences("bukabareng",
+                Context
+                        .MODE_PRIVATE);
+        Gson gson = new Gson();
+        String strObj = preferences.getString("userObj", null);
+        UserModel user = gson.fromJson(strObj, UserModel.class);
 
+        String usernameText = "BukaBareng - " + user.getUserName();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        toolbar.setTitle(usernameText);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -86,9 +97,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+       /* if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
