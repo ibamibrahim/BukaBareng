@@ -18,6 +18,7 @@ import com.bukantkpd.bukabareng.R;
 import com.bukantkpd.bukabareng.api.model.UserModel;
 import com.bukantkpd.bukabareng.api.remote.ApiUtils;
 import com.bukantkpd.bukabareng.api.remote.BukBarAPIService;
+import com.google.gson.Gson;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -82,23 +83,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 if(response.isSuccessful()){
 
+                    String result = new Gson().toJson(response.body());
+                    Log.d("LOGIN RESULT", result);
+
                     String token = response.body().getToken();
                     String username = response.body().getUserName();
                     String email = response.body().getEmail();
                     //int userId = response.body().getId();
                     boolean isLoggedIn = true;
 
-                    //Log.d("token ", token);
+                    Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();;/*
                     sharedPreferenceEditor.putString("token", token);
                     sharedPreferenceEditor.putString("username", username);
                     sharedPreferenceEditor.putString("email", email);
-                    //sharedPreferenceEditor.putInt("userId", userId);
+                    sharedPreferenceEditor.putInt("userId", userId);
                     sharedPreferenceEditor.putBoolean("isLoggedIn", isLoggedIn);
 
                     sharedPreferenceEditor.commit();
 
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
+                    startActivity(intent);*/
                 }
             }
 

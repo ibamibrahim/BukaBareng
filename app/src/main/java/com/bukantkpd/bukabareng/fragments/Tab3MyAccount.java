@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.bukantkpd.bukabareng.R;
 import com.bukantkpd.bukabareng.activities.PreLoginActivity;
@@ -25,13 +26,20 @@ import java.util.TimerTask;
 public class Tab3MyAccount extends Fragment implements View.OnClickListener{
 
     Button logOutButton;
+    TextView username;
     @Override
     @SuppressWarnings("deprecation")
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab3_my_account, container, false);
 
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+
+        String usernameText = "Halo, " + preferences.getString("username", null) + "!";
+        username = (TextView) rootView.findViewById(R.id.username_account_view);
+
         logOutButton = (Button) rootView.findViewById(R.id.logout_button);
+        username.setText(usernameText);
 
         logOutButton.setOnClickListener(this);
 
