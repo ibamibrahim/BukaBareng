@@ -29,5 +29,14 @@
         app:srcCompat="@drawable/refresh"
         />
 
+    <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Anda belum melakukan transaksi"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:id="@+id/no_transaction_my_buying"/>
+
 
 </android.support.design.widget.CoordinatorLayout>
