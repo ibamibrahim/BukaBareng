@@ -89,7 +89,7 @@
                     android:layout_gravity="bottom"
                     android:textSize="12sp"
                     android:textColor="@color/white"
-                    android:id="@+id/buy_button_view"/>
+                    android:id="@+id/pay_button_view"/>
             </LinearLayout>
         </LinearLayout>
 

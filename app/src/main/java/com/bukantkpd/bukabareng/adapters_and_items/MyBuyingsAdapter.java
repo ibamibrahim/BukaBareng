@@ -1,14 +1,18 @@
 package com.bukantkpd.bukabareng.adapters_and_items;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bukantkpd.bukabareng.R;
+import com.bukantkpd.bukabareng.activities.PaymentActivity;
+import com.bukantkpd.bukabareng.activities.ProductViewActivity;
 
 import java.util.List;
 
@@ -46,7 +50,13 @@ public class MyBuyingsAdapter extends RecyclerView.Adapter<MyBuyingsAdapter.View
         holder.productImage.setImageResource(item.getProductImage());
         holder.productCurrentQtyBuying.setText(item.getProductCurrentQtyBuying());
         holder.productGroceryPrice.setText(item.getProductGroceryPrice());
-
+        holder.payButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, PaymentActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -61,6 +71,7 @@ public class MyBuyingsAdapter extends RecyclerView.Adapter<MyBuyingsAdapter.View
         public  TextView productNormalPrice;
         public  TextView productCurrentQtyBuying;
         public  ImageView productImage;
+        public Button payButton;
 
         public ViewHolder(View itemView){
             super(itemView);
@@ -69,6 +80,7 @@ public class MyBuyingsAdapter extends RecyclerView.Adapter<MyBuyingsAdapter.View
             productGroceryPrice = (TextView) itemView.findViewById(R.id.produc_price_view);
             productCurrentQtyBuying = (TextView) itemView.findViewById(R.id.product_bought_qty_view);
             productImage = (ImageView) itemView.findViewById(R.id.product_image_view);
+            payButton = (Button) itemView.findViewById(R.id.pay_button_view);
 
         }
 

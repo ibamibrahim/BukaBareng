@@ -8,6 +8,7 @@ import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -66,6 +67,7 @@ public class ProductViewActivity extends AppCompatActivity {
 
         String deadlineText = days +" hari lagi";
         String description = item.getDesc();
+        description = Html.fromHtml(description).toString();
         String productID = item.getProductId();
 
         viewName = (TextView) findViewById(R.id.product_detal_name_view);
