@@ -8,8 +8,10 @@ import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bukantkpd.bukabareng.R;
 import com.bukantkpd.bukabareng.api.model.ProductModel;
@@ -91,6 +93,14 @@ public class ProductViewActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_product_view);
         toolbar.setTitle(productName);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+
+        toolbar.setNavigationIcon(R.drawable.arrow);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
 

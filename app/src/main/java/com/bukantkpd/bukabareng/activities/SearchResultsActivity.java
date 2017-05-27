@@ -64,9 +64,16 @@ public class SearchResultsActivity extends AppCompatActivity implements SearchRe
         Log.d("Search Query & token: ", query + " " + token);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_search_result);
-        toolbar.setTitle("hasil pencarian " + query + "     ....");
+        toolbar.setTitle("hasil pencarian " + query + "....");
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
 
+        toolbar.setNavigationIcon(R.drawable.arrow);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         getProducts(query, token);
 
     }

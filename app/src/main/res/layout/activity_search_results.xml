@@ -21,7 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/search_results_list_recyclerView"
-        android:layout_below="@id/toolbar">
+        android:layout_below="@+id/toolbar_search_result"
+        android:layout_alignParentStart="true">
     </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>
