@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ public class Tab3MyAccount extends Fragment implements View.OnClickListener{
 
     Button logOutButton;
     @Override
+    @SuppressWarnings("deprecation")
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab3_my_account, container, false);
@@ -32,6 +34,9 @@ public class Tab3MyAccount extends Fragment implements View.OnClickListener{
         logOutButton = (Button) rootView.findViewById(R.id.logout_button);
 
         logOutButton.setOnClickListener(this);
+
+        Drawable redButton = getResources().getDrawable(R.drawable.button_red);
+        logOutButton.setBackground(redButton);
 
         return rootView;
     }

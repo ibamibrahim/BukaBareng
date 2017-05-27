@@ -85,7 +85,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
             holder.deadline.setVisibility(View.INVISIBLE);
             holder.productCurrentQtyBuying.setVisibility(View.INVISIBLE);
             holder.isBeliBarengView.setVisibility(View.INVISIBLE);
-            holder.buyButton.setBackgroundColor(Color.parseColor("#7f8c8d"));
+            holder.buyButton.setEnabled(false);
         } else {
             holder.productCurrentQtyBuying.setText(item.getQuantity()+" pc BeliBareng");
 

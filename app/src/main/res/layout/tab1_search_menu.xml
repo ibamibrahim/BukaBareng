@@ -36,7 +36,7 @@
     <com.bukantkpd.bukabareng.custom_ui.ButtonMontserrat
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/button_primary"
         android:text="Cari"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/search_query_view"
