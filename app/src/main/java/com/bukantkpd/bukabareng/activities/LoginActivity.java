@@ -95,6 +95,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                 } else {
+                    Log.d("RESPONSE", response.body().getStatus());
                     Toast.makeText(LoginActivity.this, "Login Gagal! Username atau password salah",
                             Toast.LENGTH_SHORT)
                             .show();
