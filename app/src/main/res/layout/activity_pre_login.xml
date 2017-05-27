@@ -18,7 +18,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_weight="1"
-            style="?android:attr/borderlessButtonStyle"
             android:background="@color/colorPrimaryDark"
             android:text="LOGIN"
             android:textSize="17sp"

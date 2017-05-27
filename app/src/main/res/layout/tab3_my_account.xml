@@ -50,7 +50,6 @@
     <com.bukantkpd.bukabareng.custom_ui.ButtonMontserrat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="?android:attr/borderlessButtonStyle"
         android:background="@drawable/tag_background_red"
         android:text="LOG OUT"
         android:layout_below="@id/account_balance_view"
