@@ -85,6 +85,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         bbasAuthService.authUser(credentials).enqueue(new Callback<UserModel>() {
             @Override
             public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                //Toast.makeText(LoginActivity.this, response.body().getStatus(), Toast.LENGTH_SHORT).show();
+
                 if(response.body().getStatus().equals("OK")){
                     Gson gson = new Gson();
                     String strObj = gson.toJson(response.body());
@@ -93,25 +95,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     sharedPreferenceEditor.putBoolean("isLoggedIn", isLoggedIn);
                     sharedPreferenceEditor.commit();
 
-                    String userId = response.body().getUserId()+"";
+                    int userId = response.body().getUserId();
                     String userName = response.body().getUserName();
                     int balance = 400000;
-                    bbasService.createUser(userId, balance, userName).enqueue(new
-                                                                                      Callback<CreateUserResponseModel>() {
-                        @Override
-                        public void onResponse(Call<CreateUserResponseModel> call, Response<CreateUserResponseModel> response) {
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-                        }
-
-                        @Override
-                        public void onFailure(Call<CreateUserResponseModel> call, Throwable t) {
-                            Toast.makeText(LoginActivity.this, t.getMessage(),
-                                    Toast.LENGTH_SHORT)
-                                    .show();
-                        }
-                    });
-
+                    createUser(userId, balance, userName);
                 } else {
                     Log.d("RESPONSE", response.body().getStatus());
                     Toast.makeText(LoginActivity.this, "Login Gagal! Username atau password salah",
@@ -124,6 +111,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onFailure(Call<UserModel> call, Throwable t) {
                 t.printStackTrace();
                 Toast.makeText(LoginActivity.this, "Login gagal!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void createUser(int userId, int balance, String username){
+        bbasService = ApiUtils.getBBASService();
+        bbasService.createUser(userId, balance, username).enqueue(new
+                                                                          Callback<CreateUserResponseModel>() {
+            @Override
+            public void onResponse(Call<CreateUserResponseModel> call, Response<CreateUserResponseModel> response) {
+                //Toast.makeText(LoginActivity.this, response.toString(), Toast.LENGTH_SHORT)
+                // .show();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                finish();
+            }
+
+            @Override
+            public void onFailure(Call<CreateUserResponseModel> call, Throwable t) {
+                Toast.makeText(LoginActivity.this, t.getMessage(),
+                        Toast.LENGTH_SHORT)
+                        .show();
             }
         });
     }

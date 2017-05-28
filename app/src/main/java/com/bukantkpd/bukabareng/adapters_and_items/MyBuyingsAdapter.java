@@ -92,6 +92,7 @@ public class MyBuyingsAdapter extends RecyclerView.Adapter<MyBuyingsAdapter.View
                 break;
             case 2:
                 holder.status.setText("Menunggu pembeli lagi");
+                holder.payButton.setVisibility(View.INVISIBLE);
                 bg = context.getResources().getDrawable(R.drawable.tag_background_yellow);
                 holder.status.setBackground(bg);
                 break;

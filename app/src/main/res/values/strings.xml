@@ -6,8 +6,8 @@
     <string name="tab2_name">Pembelian</string>
     <string name="tab3_name">Akun Saya</string>
     <integer-array name="img_id_arr">
-        <item>@drawable/dummy_1</item>
-        <item>@drawable/dummy_2</item>
-        <item>@drawable/dummy_3</item>
+        <item>@drawable/s1</item>
+        <item>@drawable/s2</item>
+        <item>@drawable/s3</item>
     </integer-array>
 </resources>

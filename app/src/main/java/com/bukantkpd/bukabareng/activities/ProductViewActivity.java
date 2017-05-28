@@ -84,7 +84,7 @@ public class ProductViewActivity extends AppCompatActivity {
         if(remining < 1){
              remainingPc = item.getQuantity() + " barang diBeliBareng";
         } else {
-             remainingPc = (item.getLowerBound() - item.getQuantity()) + " barang lagi.)";
+             remainingPc = (item.getLowerBound() - item.getQuantity()) + " barang lagi";
         }
 
         DateTimeFormatter formatter = DateTimeFormat.forPattern("YYYY-MM-DD");

@@ -15,24 +15,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:text="BukaBersama"
+        android:text="Bukabareng"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
         android:textSize="30sp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_marginTop="120dp"
         android:id="@+id/login_text_view"/>
-    <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:text="Login dengan akun Bukalagpak"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:textSize="15sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_below="@id/login_text_view"
-        android:layout_marginTop="160dp"/>
+
     <com.bukantkpd.bukabareng.custom_ui.EdittextMontserrat
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -81,6 +71,17 @@
         android:drawablePadding="5dp"
         android:layout_above="@+id/password_view"
         android:layout_alignStart="@+id/password_view" />
+
+    <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login dengan akun Bukalapak"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@+id/login_text_view"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textviewMontserrat"/>
 
 
 </RelativeLayout>

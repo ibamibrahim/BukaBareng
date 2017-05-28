@@ -102,6 +102,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        getUserDetail(userId);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        getUserDetail(userId);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -181,7 +193,6 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<UserDetailModel> call, Response<UserDetailModel> response) {
                 Gson gson = new Gson();
                 String strObj = gson.toJson(response.body());
-
                 Log.d("USER DETAIL RESPONSE", strObj);
                 SharedPreferences sharedPreference = getSharedPreferences("bukabareng", Context
                         .MODE_PRIVATE);
