@@ -18,6 +18,18 @@ public class UserDetailModel {
     @Expose
     private Integer balance;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @SerializedName("status")
+    @Expose
+    private String status;
+
     public Integer getUserId() {
         return userId;
     }

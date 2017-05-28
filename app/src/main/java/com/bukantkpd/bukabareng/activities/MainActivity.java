@@ -14,16 +14,25 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bukantkpd.bukabareng.R;
+import com.bukantkpd.bukabareng.api.model.UserDetailModel;
 import com.bukantkpd.bukabareng.api.model.UserModel;
+import com.bukantkpd.bukabareng.api.remote.ApiUtils;
+import com.bukantkpd.bukabareng.api.remote.BukBarAPIService;
 import com.bukantkpd.bukabareng.fragments.Tab1SearchMenu;
 import com.bukantkpd.bukabareng.fragments.Tab2MyBuyings;
 import com.bukantkpd.bukabareng.fragments.Tab3MyAccount;
 import com.google.gson.Gson;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    private BukBarAPIService bukBarAPIService;
+    String userId;
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -54,12 +65,11 @@ public class MainActivity extends AppCompatActivity {
         UserModel user = gson.fromJson(strObj, UserModel.class);
 
         String usernameText = "BukaBareng - " + user.getUserName();
+        userId = user.getUserId()+"";
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         toolbar.setTitle(usernameText);
-        //setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
@@ -69,14 +79,11 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
+        bukBarAPIService = ApiUtils.getBBASService();
+
+        getUserDetail(userId);
+
+
 
         isLoggedIn();
     }
@@ -161,5 +168,28 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+    }
+    private void getUserDetail(String userId){
+
+        bukBarAPIService.getUserDetail(userId).enqueue(new Callback<UserDetailModel>() {
+            @Override
+            public void onResponse(Call<UserDetailModel> call, Response<UserDetailModel> response) {
+                Gson gson = new Gson();
+                String strObj = gson.toJson(response.body());
+
+                Log.d("USER DETAIL RESPONSE", strObj);
+                SharedPreferences sharedPreference = getSharedPreferences("bukabareng", Context
+                        .MODE_PRIVATE);
+                SharedPreferences.Editor sharedPreferenceEditor = sharedPreference.edit();
+                sharedPreferenceEditor.putString("userDetail", strObj);
+                sharedPreferenceEditor.commit();
+            }
+
+            @Override
+            public void onFailure(Call<UserDetailModel> call, Throwable t) {
+
+            }
+        });
+
     }
 }

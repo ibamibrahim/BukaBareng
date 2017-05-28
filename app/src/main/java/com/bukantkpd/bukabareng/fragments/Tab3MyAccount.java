@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +21,11 @@ import com.bukantkpd.bukabareng.R;
 import com.bukantkpd.bukabareng.activities.PreLoginActivity;
 import com.bukantkpd.bukabareng.activities.SearchResultsActivity;
 import com.bukantkpd.bukabareng.api.model.ProductModel;
+import com.bukantkpd.bukabareng.api.model.UserDetailModel;
 import com.bukantkpd.bukabareng.api.model.UserModel;
 import com.google.gson.Gson;
+
+import org.w3c.dom.Text;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -30,6 +34,7 @@ public class Tab3MyAccount extends Fragment implements View.OnClickListener{
 
     Button logOutButton;
     TextView username;
+    TextView accountBalance;
     @Override
     @SuppressWarnings("deprecation")
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,12 +47,17 @@ public class Tab3MyAccount extends Fragment implements View.OnClickListener{
 
         try {
             Gson gson = new Gson();
-            String strObj = preferences.getString("userObj", null);
-            UserModel user = gson.fromJson(strObj, UserModel.class);
+            String strObj = preferences.getString("userDetail", null);
+            Log.d("USER STROBJ", strObj);
+            UserDetailModel user = gson.fromJson(strObj, UserDetailModel.class);
 
             String usernameText = "Halo, " + user.getUserName() + "!";
             username = (TextView) rootView.findViewById(R.id.username_account_view);
             username.setText(usernameText);
+
+            String balance = "Rp " + user.getBalance();
+            accountBalance = (TextView) rootView.findViewById(R.id.account_balance_view);
+            accountBalance.setText(balance);
         } catch (Exception e){
             e.printStackTrace();
         }

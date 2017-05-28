@@ -34,6 +34,6 @@ public interface BukBarAPIService {
     Call<CreateUserResponseModel> createUser(@Query("id") String userId, @Query("balance") int
             balance, @Query("username") String username);
 
-    @POST("/get/users/{id}")
-    Call<UserDetailModel> getUserDetail(@Path("id") int userId);
+    @GET("get/users/{id}")
+    Call<UserDetailModel> getUserDetail(@Path("id") String userId);
 }

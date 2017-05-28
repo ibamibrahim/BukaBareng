@@ -31,7 +31,7 @@
         android:textAlignment="center"
         android:layout_below="@id/username_account_view"
         android:layout_marginTop="30dp"
-        android:text="Saldo BukaDompet Anda: "
+        android:text="Saldo BukaBareng Anda: "
         android:textSize="15sp"
         android:id="@+id/saldo_anda_title"/>
     <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
