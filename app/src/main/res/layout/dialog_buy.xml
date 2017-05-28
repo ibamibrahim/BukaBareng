@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+    android:padding="15dp">
+
+    <com.bukantkpd.bukabareng.custom_ui.TextviewMontserrat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Jumlah Pembelian"
+        android:textColor="@color/colorPrimary"
+        android:textAlignment="center"/>
+    <com.bukantkpd.bukabareng.custom_ui.EdittextMontserrat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="contoh: 1"
+        android:id="@+id/quantitiy_buy"
+        android:textAlignment="center"
+        style="@style/Base.V7.Widget.AppCompat.EditText"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorPrimary"
+    />
+    <com.bukantkpd.bukabareng.custom_ui.ButtonMontserrat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BELI"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:id="@+id/buy_button_final"
+        android:layout_marginTop="10dp"/>
+
+
+</LinearLayout>
