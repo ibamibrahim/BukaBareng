@@ -174,7 +174,8 @@ public class ProductViewActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onFailure(Call<CreateUserResponseModel> call, Throwable t) {
-
+                                        Toast.makeText(ProductViewActivity.this, t.getMessage(), Toast
+                                                .LENGTH_SHORT).show();
                                     }
                                 });
 

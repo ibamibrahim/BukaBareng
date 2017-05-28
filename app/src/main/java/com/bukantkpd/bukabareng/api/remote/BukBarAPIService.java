@@ -6,6 +6,7 @@ package com.bukantkpd.bukabareng.api.remote;
 
 import com.bukantkpd.bukabareng.api.model.CreateUserResponseModel;
 import com.bukantkpd.bukabareng.api.model.SearchResultListModel;
+import com.bukantkpd.bukabareng.api.model.UserBuyingListModel;
 import com.bukantkpd.bukabareng.api.model.UserDetailModel;
 import com.bukantkpd.bukabareng.api.model.UserModel;
 
@@ -41,4 +42,7 @@ public interface BukBarAPIService {
     Call<CreateUserResponseModel> createTransaction(@Query("user_id") String userId, @Query
             ("massdrop_id") String belibarengID, @Query("jumlah") String jumlah, @Query
             ("product_id") String productID);
+
+    @GET("get/user_transactions/{id}")
+    Call<UserBuyingListModel> getUserTransaction(@Path("id") String userID);
 }

@@ -14,9 +14,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.bukantkpd.bukabareng.R;
-import com.bukantkpd.bukabareng.activities.ProductViewActivity;
 import com.bukantkpd.bukabareng.adapters_and_items.SearchResultsAdapter;
-import com.bukantkpd.bukabareng.adapters_and_items.SearchResultsItem;
 import com.bukantkpd.bukabareng.api.model.ProductModel;
 import com.bukantkpd.bukabareng.api.model.SearchResultListModel;
 import com.bukantkpd.bukabareng.api.remote.ApiUtils;
@@ -24,7 +22,6 @@ import com.bukantkpd.bukabareng.api.remote.BukBarAPIService;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
