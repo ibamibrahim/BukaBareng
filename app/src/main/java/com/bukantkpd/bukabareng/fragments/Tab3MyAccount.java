@@ -27,6 +27,8 @@ import com.google.gson.Gson;
 
 import org.w3c.dom.Text;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -55,7 +57,8 @@ public class Tab3MyAccount extends Fragment implements View.OnClickListener{
             username = (TextView) rootView.findViewById(R.id.username_account_view);
             username.setText(usernameText);
 
-            String balance = "Rp " + user.getBalance();
+            String balance = "Rp " + NumberFormat.getNumberInstance(Locale.GERMAN).format(user
+                    .getBalance());
             accountBalance = (TextView) rootView.findViewById(R.id.account_balance_view);
             accountBalance.setText(balance);
         } catch (Exception e){

@@ -79,7 +79,13 @@ public class ProductViewActivity extends AppCompatActivity {
                 .getLowerPrice());
         String imageUrl = item.getImage();
         String weight = "Berat: " + item.getWeight() +  " gram";
-        String remainingPc = (item.getLowerBound() - item.getQuantity()) + " barang lagi.";
+        String remainingPc;
+        int remining = item.getLowerBound() - item.getQuantity();
+        if(remining < 1){
+             remainingPc = item.getQuantity() + " barang diBeliBareng";
+        } else {
+             remainingPc = (item.getLowerBound() - item.getQuantity()) + " barang lagi.)";
+        }
 
         DateTimeFormatter formatter = DateTimeFormat.forPattern("YYYY-MM-DD");
         DateTime currentDate = new DateTime();

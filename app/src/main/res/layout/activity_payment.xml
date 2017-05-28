@@ -90,17 +90,20 @@
                         android:layout_height="wrap_content"
                         android:text="Rp 150.000"
                         android:layout_weight=".3"
+                        android:id="@+id/payment_single_price"
                         android:textAlignment="center"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="4pcs"
+                        android:id="@+id/payment_qty"
                         android:layout_weight=".3"
                         android:textAlignment="center"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Rp 450.000"
+                        android:id="@+id/payment_total_price"
                         android:layout_weight=".3"
                         android:textAlignment="textEnd"/>
                 </LinearLayout>
@@ -127,6 +130,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
                         android:text="Rp 500.000"
+                        android:id="@+id/payment_user_balance"
                         android:textAlignment="textEnd"/>
 
                 </LinearLayout>
@@ -152,6 +156,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
                         android:text="Rp 50.000"
+                        android:id="@+id/payment_remaining_balance"
                         android:textAlignment="textEnd"/>
 
                 </LinearLayout>
@@ -165,6 +170,7 @@
             android:layout_marginBottom="10dp"
             android:background="@color/colorPrimary"
             android:text="BAYAR"
+            android:id="@+id/final_pay_button"
             android:textSize="17sp"
             android:textColor="#ffffff"
             android:textStyle="bold"

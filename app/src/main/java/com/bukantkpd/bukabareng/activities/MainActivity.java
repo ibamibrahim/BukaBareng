@@ -88,6 +88,11 @@ public class MainActivity extends AppCompatActivity {
         isLoggedIn();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getUserDetail(userId);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -187,7 +192,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UserDetailModel> call, Throwable t) {
-
+                Toast.makeText(MainActivity.this, "Request time out. Tidak tersambung dengan " +
+                        "server", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -96,7 +96,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     String userId = response.body().getUserId()+"";
                     String userName = response.body().getUserName();
                     int balance = 400000;
-                    bbasService.createUser(userId, balance, username).enqueue(new Callback<CreateUserResponseModel>() {
+                    bbasService.createUser(userId, balance, userName).enqueue(new
+                                                                                      Callback<CreateUserResponseModel>() {
                         @Override
                         public void onResponse(Call<CreateUserResponseModel> call, Response<CreateUserResponseModel> response) {
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);

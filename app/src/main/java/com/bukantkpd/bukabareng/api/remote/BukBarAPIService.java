@@ -4,6 +4,7 @@ package com.bukantkpd.bukabareng.api.remote;
  * Created by Ibam on 5/25/2017.
  */
 
+import com.bukantkpd.bukabareng.api.model.CreateTransactionResponseModel;
 import com.bukantkpd.bukabareng.api.model.CreateUserResponseModel;
 import com.bukantkpd.bukabareng.api.model.SearchResultListModel;
 import com.bukantkpd.bukabareng.api.model.UserBuyingListModel;
@@ -45,4 +46,8 @@ public interface BukBarAPIService {
 
     @GET("get/user_transactions/{id}")
     Call<UserBuyingListModel> getUserTransaction(@Path("id") String userID);
+
+    @POST("create/payments")
+    Call<CreateTransactionResponseModel> payTransaction(@Query("transaction_id") String tId,
+                                                        @Query("total_payment") String pay);
 }

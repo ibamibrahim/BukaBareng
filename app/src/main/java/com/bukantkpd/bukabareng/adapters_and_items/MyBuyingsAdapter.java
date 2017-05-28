@@ -17,6 +17,7 @@ import com.bukantkpd.bukabareng.activities.ProductViewActivity;
 import com.bukantkpd.bukabareng.api.model.ProductModel;
 import com.bukantkpd.bukabareng.api.model.UserBuyingListModel;
 import com.bukantkpd.bukabareng.api.model.UserBuyingModel;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import org.joda.time.DateTime;
@@ -98,6 +99,7 @@ public class MyBuyingsAdapter extends RecyclerView.Adapter<MyBuyingsAdapter.View
                 holder.status.setText("Transaksi Lunas");
                 bg = context.getResources().getDrawable(R.drawable.tag_background_green);
                 holder.status.setBackground(bg);
+                holder.payButton.setVisibility(View.INVISIBLE);
                 break;
         }
 
@@ -123,7 +125,9 @@ public class MyBuyingsAdapter extends RecyclerView.Adapter<MyBuyingsAdapter.View
         holder.payButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Gson gson = new Gson();
                 Intent intent = new Intent(context, PaymentActivity.class);
+                intent.putExtra("payment", gson.toJson(item));
                 context.startActivity(intent);
             }
         });
