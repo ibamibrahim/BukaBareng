@@ -92,6 +92,8 @@ public class ProductViewActivity extends AppCompatActivity {
 
         Picasso.with(viewImage.getContext()).load(imageUrl).into(viewImage);
 
+        Toast.makeText(this, item.getMassdropId()+"", Toast.LENGTH_SHORT).show();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_product_view);
         toolbar.setTitle(productName);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));

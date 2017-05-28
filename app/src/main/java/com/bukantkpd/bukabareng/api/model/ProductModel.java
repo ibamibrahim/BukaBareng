@@ -10,6 +10,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class ProductModel {
 
+    @SerializedName("name")
+    @Expose
+    private String name;
     @SerializedName("price")
     @Expose
     private Integer price;
@@ -40,6 +43,9 @@ public class ProductModel {
     @SerializedName("is_mass_drop")
     @Expose
     private Boolean isMassDrop;
+    @SerializedName("massdrop_id")
+    @Expose
+    private Integer massdropId;
     @SerializedName("deadline")
     @Expose
     private String deadline;
@@ -54,10 +60,6 @@ public class ProductModel {
     public void setName(String name) {
         this.name = name;
     }
-
-    @SerializedName("name")
-    @Expose
-    private String name;
 
     public Integer getPrice() {
         return price;
@@ -137,6 +139,14 @@ public class ProductModel {
 
     public void setIsMassDrop(Boolean isMassDrop) {
         this.isMassDrop = isMassDrop;
+    }
+
+    public Integer getMassdropId() {
+        return massdropId;
+    }
+
+    public void setMassdropId(Integer massdropId) {
+        this.massdropId = massdropId;
     }
 
     public String getDeadline() {
