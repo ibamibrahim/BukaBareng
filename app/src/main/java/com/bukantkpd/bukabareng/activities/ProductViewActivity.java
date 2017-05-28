@@ -18,8 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bukantkpd.bukabareng.R;
+import com.bukantkpd.bukabareng.api.model.CreateUserResponseModel;
 import com.bukantkpd.bukabareng.api.model.ProductModel;
 import com.bukantkpd.bukabareng.api.model.UserDetailModel;
+import com.bukantkpd.bukabareng.api.remote.ApiUtils;
+import com.bukantkpd.bukabareng.api.remote.BukBarAPIService;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -32,6 +35,10 @@ import org.w3c.dom.Text;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ProductViewActivity extends AppCompatActivity {
 
     TextView viewName;
@@ -43,6 +50,8 @@ public class ProductViewActivity extends AppCompatActivity {
     TextView viewDescription;
     ImageView viewImage;
     Button buyButton;
+    BukBarAPIService bbasService;
+
     @Override
     @SuppressWarnings("deprecation")
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +60,8 @@ public class ProductViewActivity extends AppCompatActivity {
         Gson gson = new Gson();
 
         isLoggedIn();
+
+        bbasService = ApiUtils.getBBASService();
 
         SharedPreferences preferences = getSharedPreferences("bukabareng",
                 Context
@@ -144,6 +155,28 @@ public class ProductViewActivity extends AppCompatActivity {
                                 String productID = item.getProductId();
                                 String userID = user.getUserId() + "";
                                 String belibarengID = item.getMassdropId() + "";
+
+                                bbasService.createTransaction(userID, belibarengID, quantityInt+"",
+                                        productID).enqueue(new Callback<CreateUserResponseModel>() {
+                                    @Override
+                                    public void onResponse(Call<CreateUserResponseModel> call, Response<CreateUserResponseModel> response) {
+                                        try{
+                                            String status = response.body().getStatus();
+                                            dialog.dismiss();
+                                            Toast.makeText(ProductViewActivity.this, "Sukses " +
+                                                    "membeli barang!",
+                                                    Toast.LENGTH_SHORT).show();
+                                        } catch (Exception e){
+                                            Toast.makeText(ProductViewActivity.this, e.getMessage(), Toast
+                                                    .LENGTH_SHORT).show();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<CreateUserResponseModel> call, Throwable t) {
+
+                                    }
+                                });
 
 
                             } catch (NumberFormatException e){
