@@ -2,13 +2,10 @@ package com.bukantkpd.bukabareng.activities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bukantkpd.bukabareng.R;
+import com.bukantkpd.bukabareng.api.model.CreateUserResponseModel;
 import com.bukantkpd.bukabareng.api.model.UserModel;
 import com.bukantkpd.bukabareng.api.remote.ApiUtils;
 import com.bukantkpd.bukabareng.api.remote.BukBarAPIService;
@@ -38,6 +36,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     SharedPreferences sharedPreference;
     SharedPreferences.Editor sharedPreferenceEditor;
 
+    private BukBarAPIService bbasAuthService;
     private BukBarAPIService bbasService;
 
     @Override
@@ -47,7 +46,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/Montserrat.ttf");
 
 
-        bbasService = ApiUtils.getBBASAuthService();
+        bbasAuthService = ApiUtils.getBBASAuthService();
+        bbasService = ApiUtils.getBBASService();
 
         loginButton = (Button) findViewById(R.id.login_button_view);
         username = (EditText) findViewById(R.id.username_view);
@@ -79,10 +79,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-    private void login(String username, String password){
+    private void login(final String username, String password){
 
         String credentials = Credentials.basic(username, password);
-        bbasService.authUser(credentials).enqueue(new Callback<UserModel>() {
+        bbasAuthService.authUser(credentials).enqueue(new Callback<UserModel>() {
             @Override
             public void onResponse(Call<UserModel> call, Response<UserModel> response) {
                 if(response.body().getStatus().equals("OK")){
@@ -92,8 +92,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     sharedPreferenceEditor.putString("userObj", strObj);
                     sharedPreferenceEditor.putBoolean("isLoggedIn", isLoggedIn);
                     sharedPreferenceEditor.commit();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
+
+                    String userId = response.body().getUserId()+"";
+                    String userName = response.body().getUserName();
+                    int balance = 400000;
+                    bbasService.createUser(userId, balance, username).enqueue(new Callback<CreateUserResponseModel>() {
+                        @Override
+                        public void onResponse(Call<CreateUserResponseModel> call, Response<CreateUserResponseModel> response) {
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void onFailure(Call<CreateUserResponseModel> call, Throwable t) {
+                            Toast.makeText(LoginActivity.this, t.getMessage(),
+                                    Toast.LENGTH_SHORT)
+                                    .show();
+                        }
+                    });
+
                 } else {
                     Log.d("RESPONSE", response.body().getStatus());
                     Toast.makeText(LoginActivity.this, "Login Gagal! Username atau password salah",
@@ -108,44 +125,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Toast.makeText(LoginActivity.this, "Login gagal!", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-       /* bbasService.getUsersDetail(username, password).enqueue(new Callback<UserModel>() {
-            @Override
-            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-
-                if(response.isSuccessful()){
-
-                    String result = new Gson().toJson(response.body());
-                    Log.d("LOGIN RESULT", result);
-
-                    String token = response.body().getToken();
-                    String username = response.body().getUserName();
-                    String email = response.body().getEmail();
-                    int userId = response.body().getId();
-                    boolean isLoggedIn = true;
-
-                    Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();;*//*
-
-                    sharedPreferenceEditor.putString("token", token);
-                    sharedPreferenceEditor.putString("username", username);
-                    sharedPreferenceEditor.putString("email", email);
-                    sharedPreferenceEditor.putInt("userId", userId);
-                    sharedPreferenceEditor.putBoolean("isLoggedIn", isLoggedIn);
-
-                    sharedPreferenceEditor.commit();
-
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);*//*
-                }
-            }
-
-            @Override
-            public void onFailure(Call<UserModel> call, Throwable t) {
-                t.printStackTrace();
-                Toast.makeText(LoginActivity.this, "Username atau password salah!", Toast.LENGTH_SHORT).show();
-            }
-        });*/
     }
 
     private class AsyncTaskRunner extends AsyncTask<String, String, String>{
